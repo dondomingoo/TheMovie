@@ -10,9 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Commands\" />
     <Folder Include="Viewmodel\" />
-    <Folder Include="View\" />
   </ItemGroup>
 
 </Project>
