@@ -15,12 +15,15 @@ namespace TheMovie
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    { 
+        MoviesViewModel mvm = new MoviesViewModel();
+    
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = mvm;
         }
 
-      
+        
     }
 }

@@ -7,14 +7,26 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1100">
     <Grid Background="#FFC88A6D">
-        <TextBox HorizontalAlignment="Left" Margin="748,197,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="748,227,0,0" TextWrapping="Wrap" Text="Varighed" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="748,259,0,0" TextWrapping="Wrap" Text="Genre" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Tilføj" HorizontalAlignment="Left" Margin="718,334,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
+        <TextBox Text="{Binding SelectedMovie.Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding SelectedMovie.Duration, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding SelectedMovie.Genre, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Tilføj Ny" Command="{Binding Path=AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="718,334,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
         <Label Content="Navn:" HorizontalAlignment="Left" Margin="641,193,0,0" VerticalAlignment="Top"/>
         <Label Content="Varighed:" HorizontalAlignment="Left" Margin="639,223,0,0" VerticalAlignment="Top"/>
         <Label Content="Genre:" HorizontalAlignment="Left" Margin="639,255,0,0" VerticalAlignment="Top"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="29,51,572,164"/>
+        <ListBox ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" Margin="29,51,572,164">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" Width="100"/>
+                        <TextBlock Text=" " Width="100"/>
+                        <TextBlock Text="{Binding Duration}" Width="100"/>
+                        <TextBlock Text=" " Width="100"/>
+                        <TextBlock Text="{Binding Genre}" Width="100"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
 
     </Grid>
