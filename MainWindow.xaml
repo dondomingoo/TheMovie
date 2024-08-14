@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="600" Width="1100">
+    <Grid Background="#FFC88A6D">
+        <TextBox HorizontalAlignment="Left" Margin="748,197,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="748,227,0,0" TextWrapping="Wrap" Text="Varighed" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="748,259,0,0" TextWrapping="Wrap" Text="Genre" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Tilføj" HorizontalAlignment="Left" Margin="718,334,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
+        <Label Content="Navn:" HorizontalAlignment="Left" Margin="641,193,0,0" VerticalAlignment="Top"/>
+        <Label Content="Varighed:" HorizontalAlignment="Left" Margin="639,223,0,0" VerticalAlignment="Top"/>
+        <Label Content="Genre:" HorizontalAlignment="Left" Margin="639,255,0,0" VerticalAlignment="Top"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="29,51,572,164"/>
+
 
     </Grid>
 </Window>
