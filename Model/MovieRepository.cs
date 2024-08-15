@@ -12,6 +12,7 @@ namespace TheMovie.Model
     public class MovieRepository
     {
         public List<Movie> movies = new List<Movie>();
+        private string[] lines;
 
 
 
@@ -25,34 +26,48 @@ namespace TheMovie.Model
 
 
         //Metode til at hente film fra hdd
-        public void LoadFromFile()
+        public List<Movie> LoadFromFile()
         {
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = Path.Combine(docPath, "MovieDoc.txt");
+            //string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //string filePath = Path.Combine(docPath, "MovieDoc.txt");
 
-            if (!File.Exists(filePath))
+            if (!File.Exists("MovieDoc.txt"))
             {
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    while (!reader.EndOfStream)
-                    {
-                        string title = reader.ReadLine()?.Replace("Titel: ", "");
-                        int duration = int.Parse(reader.ReadLine()?.Replace("Varighed: ", ""));
-                        string genre = reader.ReadLine()?.Replace("Genre: ", "");
-
-                        reader.ReadLine();
-
-                        Movie movie = new Movie()
-                        {
-                            Title = title,
-                            Duration = duration,
-                            Genre = genre
-                        };
-
-                        movies.Add(movie);
-                    }
-                }
+                using StreamWriter sw = new("MovieDoc.txt");
             }
+
+
+            using StreamReader sr = new("MovieDoc.txt");
+            string[] lines = sr.ReadToEnd().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            for (int i = 0; i < lines.Length - 1; i++)
+            {
+                string[] attributes = lines[i].Split(',');
+                movies.Add(new Movie(attributes[0], int.Parse(attributes[1]), attributes[2]));
+            }
+            return movies;
+
+
+            //using (StreamReader reader = new StreamReader("MovieDoc.txt"))
+            //    {
+            //        while (!reader.EndOfStream)
+            //        {
+            //            string title = reader.ReadLine()?.Replace("Titel: ", "");
+            //            int duration = int.Parse(reader.ReadLine()?.Replace("Varighed: ", ""));
+            //            string genre = reader.ReadLine()?.Replace("Genre: ", "");
+
+            //            reader.ReadLine();
+
+            //            Movie movie = new Movie()
+            //            {
+            //                Title = title,
+            //                Duration = duration,
+            //                Genre = genre
+            //            };
+
+            //            movies.Add(movie);
+            //        }
+            //    }
+            //}
 
         }
 
@@ -62,29 +77,35 @@ namespace TheMovie.Model
         //Metode til at gemme film til hdd
         public void SaveToFile()
         {
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            Console.WriteLine("Indtast filmtitel: ");
-            string title = Console.ReadLine();
+            //Console.WriteLine("Indtast filmtitel: ");
+            //string title = Console.ReadLine();
 
-            Console.WriteLine("Indtast varighed: ");
-            int duration = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Indtast varighed: ");
+            //int duration = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Indtast genre: ");
-            string genre = Console.ReadLine();
+            //Console.WriteLine("Indtast genre: ");
+            //string genre = Console.ReadLine();
 
-            Movie movie = new Movie()
+            //Movie movie = new Movie()
+            //{
+            //    Title = title,
+            //    Duration = duration,
+            //    Genre = genre
+            //};
+
+            using (StreamWriter writer = new ("MovieDoc.txt"))
+            //using (StreamWriter writer = new StreamWriter(Path.Combine(docPath, "MovieDoc.txt"), true))
             {
-                Title = title,
-                Duration = duration,
-                Genre = genre
-            };
+                foreach (Movie movie in movies)
+                {
+                    writer.WriteLine(movie.Title + "," + movie.Duration + "," + movie.Genre);
+                }
 
-            using (StreamWriter writer = new StreamWriter(Path.Combine(docPath, "MovieDoc.txt"), true))
-            {
-                writer.WriteLine($"Titel: {movie.Title}");
-                writer.WriteLine($"Varighed: {movie.Duration}");
-                writer.WriteLine($"Genre: {movie.Genre}");
+                //writer.WriteLine($"Titel: {movie.Title}");
+                //writer.WriteLine($"Varighed: {movie.Duration}");
+                //writer.WriteLine($"Genre: {movie.Genre}");
             }
 
         }
