@@ -14,7 +14,7 @@
         <Label Content="Navn:" HorizontalAlignment="Left" Margin="641,193,0,0" VerticalAlignment="Top"/>
         <Label Content="Varighed:" HorizontalAlignment="Left" Margin="639,223,0,0" VerticalAlignment="Top"/>
         <Label Content="Genre:" HorizontalAlignment="Left" Margin="639,255,0,0" VerticalAlignment="Top"/>
-        <ListBox ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" Margin="29,51,572,164">
+        <ListBox ItemsSource="{Binding movieViewModels}" SelectedItem="{Binding SelectedMovie}" Margin="29,51,572,164">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
