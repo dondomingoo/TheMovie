@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TheMovie.ViewModels;
 
 namespace TheMovie
 {
@@ -16,7 +17,7 @@ namespace TheMovie
     /// </summary>
     public partial class MainWindow : Window
     { 
-        MoviesViewModel mvm = new MoviesViewModel();
+        MainViewModel mvm = new MainViewModel();
     
         public MainWindow()
         {

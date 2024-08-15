@@ -18,5 +18,8 @@ namespace TheMovie.Model
             Duration = duration;
             Genre = genre;
         }
+        public Movie()
+        {
+        }
     }
 }

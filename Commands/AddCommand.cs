@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using TheMovie.ViewModel;
+using TheMovie.ViewModels;
 using TheMovie.Model;
 using System.Windows;
 
@@ -21,9 +21,9 @@ namespace TheMovie.Commands
 
         public void Execute(object? parameter)
         {
-            if (parameter is MoviesViewModel mvm)
+            if (parameter is MainViewModel mvm)
             {
-                mvm.Movies.Add(new Movie { Title="Title", Duration=0, Genre="Genre"});
+                mvm.AddMovie(new Movie { Title="Title", Duration=0, Genre="Genre"});
             }
         }
     }

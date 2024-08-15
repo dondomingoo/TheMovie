@@ -11,7 +11,7 @@ namespace TheMovie.Model
 {
     public class MovieRepository
     {
-        private List<Movie> movies = new List<Movie>();
+        public List<Movie> movies = new List<Movie>();
 
 
 
