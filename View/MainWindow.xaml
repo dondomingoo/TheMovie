@@ -18,11 +18,11 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Title}" Width="100"/>
+                        <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                         <TextBlock Text=" " Width="100"/>
-                        <TextBlock Text="{Binding Duration}" Width="100"/>
+                        <TextBlock Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                         <TextBlock Text=" " Width="100"/>
-                        <TextBlock Text="{Binding Genre}" Width="100"/>
+                        <TextBlock Text="{Binding Genre, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
