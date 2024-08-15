@@ -17,13 +17,13 @@ namespace TheMovie.ViewModels
             movieViewModels = [];
             foreach (Movie movie in MovieRepository.Movies)
             {
-                movieViewModels.Add(new MovieVM(movie));
+                movieViewModels.Add(new MovieViewModel(movie));
             }
         }
 
         public void AddMovie(Movie movie)
         {
-            MovieVM mVM = new(movie);
+            MovieViewModel mVM = new(movie);
             movieViewModels.Add(mVM);
         }
 
