@@ -9,10 +9,10 @@ namespace TheMovie.Model
     internal class Movie
     {
         public string Name { get; set; }
-        public TimeSpan Duration { get; set; }
+        public int Duration { get; set; }
         public string Genre { get; set; }
 
-        public Movie(string name, TimeSpan duration, string genre)
+        public Movie(string name, int duration, string genre)
         {
             Name = name;
             Duration = duration;
