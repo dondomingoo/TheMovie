@@ -9,14 +9,14 @@ namespace TheMovie.ViewModels
     public class MovieViewModel
     {
         public Movie Movie { get; }
-        public string Name { get; set; }
+        public string Title { get; set; }
         public int Duration { get; set; }
         public string Genre { get; set; }
 
         public MovieViewModel(Movie Movie)
         {
             this.Movie = Movie;
-            Name = Movie.Name;
+            Title = Movie.Title;
             Duration = Movie.Duration;
             Genre = Movie.Genre;
         }
