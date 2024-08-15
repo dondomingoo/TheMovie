@@ -9,7 +9,10 @@ using TheMovie.Model;
 using System.Windows;
 
 namespace TheMovie.Commands
-{
+{   // AddCommand er en klasse som implementerer ICommand interfacet 
+    // AddCommand har en event CanExecuteChanged som trigges når CanExecute metoden ændrer sig 
+    // AddCommand har en metode CanExecute som returnerer en boolsk værdi
+    // AddCommand har en metode Execute som tager et parameter og tilføjer en ny film til listen af film i MainViewModel
     public class AddCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;

@@ -14,13 +14,13 @@ namespace TheMovie.ViewModels
 {
     public class MainViewModel:INotifyPropertyChanged
     {
-        public ObservableCollection<MovieViewModel> movieViewModels { get; set; }
-        private MovieRepository movieRepository;
+        public ObservableCollection<MovieViewModel> movieViewModels { get; set; }  //Liste af MovieViewModels som er en liste af film der kan vises i viewet
+        private MovieRepository movieRepository; //Repository som indeholder en liste af film
 
-        private MovieViewModel _selectedMovie;
+        private MovieViewModel _selectedMovie; //Den valgte film i viewet 
 
-       
 
+        //SelectedMovie property som holder styr på hvilken film der er valgt i viewet 
         public MovieViewModel SelectedMovie
         {
             get { return _selectedMovie; }
@@ -31,9 +31,10 @@ namespace TheMovie.ViewModels
             }
         }
 
-        public ICommand AddCommand { get; set; }
-        public ICommand SaveCommand { get; set; }
+        public ICommand AddCommand { get; set; } //Kommando til at tilføje en ny film til listen af film
+        public ICommand SaveCommand { get; set; } //Kommando til at gemme listen af film til en fil
 
+        //MainViewModel constructor som initialiserer en ny instans af MovieRepository og MovieViewModels
         public MainViewModel()
         {
             movieRepository = new MovieRepository();
@@ -41,13 +42,11 @@ namespace TheMovie.ViewModels
             LoadMoviesFromRepository();
 
 
-            foreach (Movie movie in movieRepository.GetMovies())
-            {
-                movieViewModels.Add(new MovieViewModel(movie));
-            }
             AddCommand = new AddCommand();
+            SaveCommand = new SaveCommand();
         }
 
+        //Metode til at indlæse film fra repository til viewmodel
         private void LoadMoviesFromRepository()
         {
             foreach (Movie movie in movieRepository.movies)
@@ -56,6 +55,7 @@ namespace TheMovie.ViewModels
             }
         }
 
+        //Metode der kalder på AddMovie metoden i repository for at tilføje en ny film til listen af film og opdatere viewet
         public void AddMovie (Movie movie)
         {
             movieRepository.AddMovie(movie);
@@ -63,6 +63,14 @@ namespace TheMovie.ViewModels
             UpdateMovieList();
         }
 
+        //Metode der kalder på SaveToFile metoden i repository for at gemme listen af film til filen
+        public void SaveMovie()
+        {
+            UpdateMovieList();
+            movieRepository.SaveToFile();
+        }
+
+        //Metode der kalder på Update metoden i repository for at opdatere listen af film
         public void UpdateMovieList()
         {
             List<Movie> movieList = new List<Movie>();
@@ -72,33 +80,7 @@ namespace TheMovie.ViewModels
             }
             movieRepository.Update(movieList);
         }
-        //public MainViewModel() 
-        //{
-        //    movieViewModels = []; 
-        //    foreach (Movie movie in MovieRepository.movies)
-        //    {
-        //        movieViewModels.Add(new MovieViewModel(movie));
-        //    }
-        //}
-
-        //public void AddMovie(Movie movie)
-        //{
-        //    MovieViewModel mVM = new(movie);
-        //    movieViewModels.Add(mVM);
-        //}
-
-        //public void UpdateMovieList()
-        //{
-        //    List<Movie> movieList = [];
-        //    foreach (MovieViewModel movieViewModel in movieViewModels) 
-        //    {
-        //        movieList.Add(movieViewModel.Movie);
-        //    }
-        //    MovieRepository.Update(movieList);
-        //}
-
-        // slet "Movies" fra "mvm.Movies.Add..." (og metoden hedder AddMovie)"
-        // tilføj "mvm.UpdateMovieList();"
+        
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

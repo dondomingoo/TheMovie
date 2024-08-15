@@ -4,30 +4,30 @@ using TheMovie.Model;
 
 public class MovieRepository
 {
+    //En ny liste som inneholder Movie-objekter blir opprettet
     public List<Movie> movies = new List<Movie>();
 
+    //Konstruktør som kaller på LoadFromFile metoden for at listen skal fylles med Movie-objekter fra filen
     public MovieRepository()
     {
         LoadFromFile(movies);
     }
 
+    //Metode som ligger et Movie-objekt til listen og kaller på SaveToFile metoden for at lagre listen til filen
     public void AddMovie(Movie movie)
     {
         movies.Add(movie);
         SaveToFile();
     }
 
-    public List<Movie> GetMovies()
-    {
-        return new List<Movie>(movies);
-    }
-
+    //Metode som oppdaterer listen med Movie-objekter og kalder på SaveToFile metoden for at lagre listen til filen
     public void Update(List<Movie> updatedMovies)
     {
         movies = updatedMovies;
         SaveToFile();
     }
 
+    //Metode som fyller listen med Movie-objekter fra filen MovieDoc.txt
     public void LoadFromFile(List<Movie> movies)
     {
         
@@ -47,6 +47,7 @@ public class MovieRepository
        
     }
 
+    //Metode som lagrer listen med Movie-objekter til filen MovieDoc.txt
     public void SaveToFile()
     {
         using (StreamWriter writer = new("MovieDoc.txt"))
