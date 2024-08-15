@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using TheMovie.Model;
 
-namespace TheMovies.Model
+namespace TheMovie.Model
 {
     public class MovieRepository
     {
