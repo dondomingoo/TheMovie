@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace TheMovie.Model
 {
-    internal class Movie
+    public class Movie
     {
-        public string Name { get; set; }
+        public string Title { get; set; }
         public int Duration { get; set; }
         public string Genre { get; set; }
 
-        public Movie(string name, int duration, string genre)
+        public Movie(string title, int duration, string genre)
         {
-            Name = name;
+            Title = title;
             Duration = duration;
             Genre = genre;
         }
