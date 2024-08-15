@@ -23,7 +23,7 @@ namespace TheMovie.Commands
         {
             if (parameter is MoviesViewModel mvm)
             {
-                mvm.Movies.Add(new Movie { Name="Name", Duration="Varighed", Genre="Genre"});
+                mvm.Movies.Add(new Movie { Name="Name", Duration=0, Genre="Genre"});
             }
         }
     }
