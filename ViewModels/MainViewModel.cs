@@ -41,6 +41,10 @@ namespace TheMovie.ViewModels
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public ICommand AddCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
+
         public MainViewModel()
         {
             MoviesVM = [];

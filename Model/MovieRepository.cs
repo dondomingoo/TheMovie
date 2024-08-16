@@ -7,7 +7,7 @@ public class MovieRepository
     private List<Movie> movies = [];
     private string fileName;
 
-    public MovieRepository(string fileName = "MovieDoc.csv")
+    public MovieRepository(string fileName = "MovieDoc.txt")
     {
         this.fileName = fileName;
         LoadFromFile();
