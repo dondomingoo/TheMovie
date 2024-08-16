@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace TheMovie.Commands
 {
-    public class AddCommand : ICommand
+    public class SaveCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
 
@@ -23,7 +23,8 @@ namespace TheMovie.Commands
         {
             if (parameter is MainViewModel mvm)
             {
-                mvm.AddMovie();
+                mvm.SaveMovie();
+                MessageBox.Show("Filmen er gemt");
             }
         }
     }

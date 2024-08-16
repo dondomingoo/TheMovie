@@ -17,7 +17,7 @@ namespace TheMovie
     /// </summary>
     public partial class MainWindow : Window
     { 
-        MainViewModel mvm = new MainViewModel();
+        private MainViewModel mvm = new();
     
         public MainWindow()
         {

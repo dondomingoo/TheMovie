@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace TheMovie.Model
 {
-    public class Movie
+    public class Movie(int roomId, string title, int duration, string genre)
     {
-        public string Title { get; set; }
-        public int Duration { get; set; }
-        public string Genre { get; set; }
+        public int MovieId { get; set; } = roomId;
+        public string Title { get; set; } = title;
+        public int Duration { get; set; } = duration;
+        public string Genre { get; set; } = genre;
 
-        public Movie(string title, int duration, string genre)
+        public override string ToString()
         {
-            Title = title;
-            Duration = duration;
-            Genre = genre;
-        }
-        public Movie()
-        {
+            return $"{Title};{Duration};{Genre}";
         }
     }
 }

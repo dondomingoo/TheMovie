@@ -4,57 +4,92 @@ using TheMovie.Model;
 
 public class MovieRepository
 {
-    public List<Movie> movies = new List<Movie>();
+    private List<Movie> movies = [];
+    private string fileName;
 
-    public MovieRepository()
+    public MovieRepository(string fileName = "MovieDoc.csv")
     {
-        LoadFromFile(movies);
+        this.fileName = fileName;
+        LoadFromFile();
     }
-
     public void AddMovie(Movie movie)
     {
         movies.Add(movie);
         SaveToFile();
     }
-
     public List<Movie> GetMovies()
     {
-        return new List<Movie>(movies);
+        return movies;
     }
-
-    public void Update(List<Movie> updatedMovies)
+    public void UpdateMovies(Movie movie)
     {
-        movies = updatedMovies;
+        for (int i = 0; i < movies.Count; i++)
+        {
+            if (movies[i].MovieId == movie.MovieId)
+            {
+                movies[i] = movie;
+            }
+        }
         SaveToFile();
     }
-
-    public void LoadFromFile(List<Movie> movies)
+    public void DeleteMovie(Movie movie)
     {
-        
-            if (!File.Exists("MovieDoc.txt"))
+        for (int i = 0; i < movies.Count; i++)
+        {
+            if (movies[i].MovieId == movie.MovieId)
             {
-                using StreamWriter sw = new("MovieDoc.txt");
+                movies.Remove(movies[i]);
             }
-
-            using StreamReader sr = new("MovieDoc.txt");
-            string[] lines = sr.ReadToEnd().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-            for (int i = 0; i < lines.Length - 1; i++)
-            {
-                string[] attributes = lines[i].Split(',');
-                movies.Add(new Movie(attributes[0], int.Parse(attributes[1]), attributes[2]));
-            }
-        
-       
+        }
+        SaveToFile();
     }
+    public int CalculateMovieId()
+    {
+        List<int> ids = new List<int>();
+        foreach (Movie movie in movies)
+        {
+            ids.Add(movie.MovieId);
+        }
+        for (int i = 1; i <= ids.Count; i++)
+        {
+            if (!ids.Contains(i))
+            {
+                return i;
+            }
+        }
+        return ids.Count + 1;
+    }
+    public void LoadFromFile()
+    {
+        if (!File.Exists(fileName))
+        {
+            using StreamWriter sw = new(fileName);
+        }
 
+        using StreamReader sr = new(fileName);
+        string[] lines = sr.ReadToEnd().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+        for (int i = 0; i < lines.Length - 1; i++)
+        {
+            string[] attributes = lines[i].Split(',');
+            movies.Add(new Movie(int.Parse(attributes[0]), attributes[1], int.Parse(attributes[2]), attributes[3]));
+        }
+    }
     public void SaveToFile()
     {
-        using (StreamWriter writer = new("MovieDoc.txt"))
+        try
         {
-            foreach (Movie movie in movies)
+            using (StreamWriter writer = new(fileName))
             {
-                writer.WriteLine($"{movie.Title},{movie.Duration},{movie.Genre}");
+                foreach (Movie movie in movies)
+                {
+                    writer.WriteLine($"{movie.MovieId};{movie.Title};{movie.Duration};{movie.Genre}");
+                }
             }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
         }
     }
 }
