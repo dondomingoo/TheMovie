@@ -57,7 +57,7 @@ namespace TheMovie.ViewModels
 
         public void AddMovie()
         {
-            Movie movie = new("", 0, "");
+            Movie movie = new("", null, "");
             MovieViewModel mVM = new(movie);
             MoviesVM.Add(mVM);
             SelectedMovie = mVM;
