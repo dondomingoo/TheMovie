@@ -24,7 +24,5 @@ namespace TheMovie
             InitializeComponent();
             DataContext = mvm;
         }
-
-        
     }
 }

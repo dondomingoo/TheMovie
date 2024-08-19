@@ -5,29 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1100">
-    <Grid Background="#FFC88A6D">
-        <TextBox Text="{Binding SelectedMovie.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Text="{Binding SelectedMovie.Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Text="{Binding SelectedMovie.Genre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Tilføj Ny" Command="{Binding Path=AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="718,334,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
-        <Button Content="Gem" Command="{Binding Path=SaveCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="719,409,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
-        <Label Content="Navn:" HorizontalAlignment="Left" Margin="641,193,0,0" VerticalAlignment="Top"/>
-        <Label Content="Varighed:" HorizontalAlignment="Left" Margin="639,223,0,0" VerticalAlignment="Top"/>
-        <Label Content="Genre:" HorizontalAlignment="Left" Margin="639,255,0,0" VerticalAlignment="Top"/>
-        <ListBox ItemsSource="{Binding MoviesVM}" SelectedItem="{Binding SelectedMovie}" Margin="29,51,572,164">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
-                        <TextBlock Text=" " Width="100"/>
-                        <TextBlock Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
-                        <TextBlock Text=" " Width="100"/>
-                        <TextBlock Text="{Binding Genre, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FF070219">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        </Grid>
+
+        <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5">
+            <Label Content="Titel" HorizontalAlignment="Left" Margin="1,0,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <Label Content="Varighed" HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <Label Content="Genre" HorizontalAlignment="Left" Margin="202,0,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <ListBox ItemsSource="{Binding MoviesVM}" SelectedItem="{Binding SelectedMovie}" Background="#FFE6E6E6" Margin="0,27,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                            <TextBlock Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                            <TextBlock Text="{Binding Genre, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5,0,5">
+            <TextBox Text="{Binding SelectedMovie.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Background="#FFE6E6E6" Margin="75,246,0,0"/>
+            <TextBox Text="{Binding SelectedMovie.Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Background="#FFE6E6E6" Margin="75,277,0,0"/>
+            <TextBox Text="{Binding SelectedMovie.Genre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Background="#FFE6E6E6" Margin="75,309,0,0"/>
+
+            <Label Content="Titel" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,242,0,0"/>
+            <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,273,0,0" RenderTransformOrigin="0.636,0.81"/>
+            <Label Content="Genre" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,304,0,0" Height="27"/>
+
+            <StackPanel Orientation="Horizontal" Margin="10,373,10,0">
+
+                <Button Content="Tilføj ny film" Command="{Binding AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
+                <Button Content="Slet film" Command="{Binding DeleteCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Center" Margin="8,0,0,0" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
+                <Button Content="Gem ændringer" Command="{Binding SaveCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Right" Margin="8,0,0,0" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
+            </StackPanel>
+        </Grid>
 
 
     </Grid>

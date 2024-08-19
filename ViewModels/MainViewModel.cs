@@ -42,8 +42,9 @@ namespace TheMovie.ViewModels
             }
         }
 
-        public ICommand AddCommand { get; set; }
-        public ICommand SaveCommand { get; set; }
+        public ICommand AddCommand { get; } = new AddCommand();
+        public ICommand SaveCommand { get; } = new SaveCommand();
+        public ICommand DeleteCommand { get; } = new DeleteCommand();
 
         public MainViewModel()
         {
@@ -64,27 +65,33 @@ namespace TheMovie.ViewModels
 
         public void DeleteMovie()
         {
-            mR.DeleteMovie(SelectedMovie.Movie);
+            //mR.DeleteMovie(SelectedMovie.Movie);
             MoviesVM.Remove(SelectedMovie);
         }
 
-        public void SaveMovie()
+        public void SaveMovies()
         {
-            bool b = false;
-            List<Movie> movies = mR.GetMovies();
-            for (int i = 0; i < movies.Count; i++)
+            List<Movie> movieList = [];
+            foreach (MovieViewModel movieViewModel in MoviesVM)
             {
-                if (SelectedMovie.Movie.MovieId == movies[i].MovieId)
-                {
-                    mR.UpdateMovies(SelectedMovie.Movie);
-                    b = true;
-                    break;
-                }
+                movieList.Add(movieViewModel.Movie);
             }
-            if (b == false)
-            {
-                mR.AddMovie(SelectedMovie.Movie);
-            }
+            mR.UpdateMovies(movieList);
+            //bool b = false;
+            //List<Movie> movies = mR.GetMovies();
+            //for (int i = 0; i < movies.Count; i++)
+            //{
+            //    if (SelectedMovie.Movie.MovieId == movies[i].MovieId)
+            //    {
+            //        mR.UpdateMovies(SelectedMovie.Movie);
+            //        b = true;
+            //        break;
+            //    }
+            //}
+            //if (b == false)
+            //{
+            //    mR.AddMovie(SelectedMovie.Movie);
+            //}
         }
     }
 }

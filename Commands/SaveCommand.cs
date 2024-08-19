@@ -7,6 +7,7 @@ using System.Windows.Input;
 using TheMovie.ViewModels;
 using TheMovie.Model;
 using System.Windows;
+using System.Xml.Linq;
 
 namespace TheMovie.Commands
 {
@@ -23,8 +24,20 @@ namespace TheMovie.Commands
         {
             if (parameter is MainViewModel mvm)
             {
-                mvm.SaveMovie();
-                MessageBox.Show("Filmen er gemt");
+                foreach (MovieViewModel movieViewModel in mvm.MoviesVM)
+                {
+                    movieViewModel.Movie.Title = movieViewModel.Title;
+                    movieViewModel.Movie.Duration = movieViewModel.Duration;
+                    movieViewModel.Movie.Genre = movieViewModel.Genre;
+                }
+                //if (mvm.SelectedMovie != null)
+                //{
+                //    mvm.SelectedMovie.Movie.Title = mvm.SelectedMovie.Title;
+                //    mvm.SelectedMovie.Movie.Duration = mvm.SelectedMovie.Duration;
+                //    mvm.SelectedMovie.Movie.Genre = mvm.SelectedMovie.Genre;
+                //}
+                mvm.SaveMovies();
+                MessageBox.Show("Listen er opdateret");
             }
         }
     }

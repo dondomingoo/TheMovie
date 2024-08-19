@@ -7,7 +7,7 @@ public class MovieRepository
     private List<Movie> movies = [];
     private string fileName;
 
-    public MovieRepository(string fileName = "MovieDoc.txt")
+    public MovieRepository(string fileName = "MovieDoc.csv")
     {
         this.fileName = fileName;
         LoadFromFile();
@@ -21,28 +21,29 @@ public class MovieRepository
     {
         return movies;
     }
-    public void UpdateMovies(Movie movie)
+    public void UpdateMovies(List<Movie> movieList)
     {
-        for (int i = 0; i < movies.Count; i++)
-        {
-            if (movies[i].MovieId == movie.MovieId)
-            {
-                movies[i] = movie;
-            }
-        }
+        //for (int i = 0; i < movies.Count; i++)
+        //{
+        //    if (movies[i].MovieId == movie.MovieId)
+        //    {
+        //        movies[i] = movie;
+        //    }
+        //}
+        movies = movieList;
         SaveToFile();
     }
-    public void DeleteMovie(Movie movie)
-    {
-        for (int i = 0; i < movies.Count; i++)
-        {
-            if (movies[i].MovieId == movie.MovieId)
-            {
-                movies.Remove(movies[i]);
-            }
-        }
-        SaveToFile();
-    }
+    //public void DeleteMovie(Movie movie)
+    //{
+    //    for (int i = 0; i < movies.Count; i++)
+    //    {
+    //        if (movies[i].MovieId == movie.MovieId)
+    //        {
+    //            movies.Remove(movies[i]);
+    //        }
+    //    }
+    //    //SaveToFile();
+    //}
     public int CalculateMovieId()
     {
         List<int> ids = new List<int>();
@@ -71,7 +72,7 @@ public class MovieRepository
 
         for (int i = 0; i < lines.Length - 1; i++)
         {
-            string[] attributes = lines[i].Split(',');
+            string[] attributes = lines[i].Split(';');
             movies.Add(new Movie(int.Parse(attributes[0]), attributes[1], int.Parse(attributes[2]), attributes[3]));
         }
     }
