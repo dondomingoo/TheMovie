@@ -25,7 +25,7 @@ namespace TheMovie.Commands
             {
                 if (mvm.SelectedMovie == null)
                 {
-                    MessageBox.Show("Intet lokale valgt");
+                    MessageBox.Show("Ingen film valgt");
                 }
                 else { mvm.DeleteMovie(); }
             }

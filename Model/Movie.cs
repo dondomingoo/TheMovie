@@ -8,9 +8,9 @@ using System.Xml.Linq;
 
 namespace TheMovie.Model
 {
-    public class Movie(int roomId, string title, int duration, string genre)
+    public class Movie(string title, int duration, string genre)
     {
-        public int MovieId { get; set; } = roomId;
+        //public int MovieId { get; set; } = movieId;
         public string Title { get; set; } = title;
         public int Duration { get; set; } = duration;
         public string Genre { get; set; } = genre;

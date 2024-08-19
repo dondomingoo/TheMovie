@@ -44,22 +44,22 @@ public class MovieRepository
     //    }
     //    //SaveToFile();
     //}
-    public int CalculateMovieId()
-    {
-        List<int> ids = new List<int>();
-        foreach (Movie movie in movies)
-        {
-            ids.Add(movie.MovieId);
-        }
-        for (int i = 1; i <= ids.Count; i++)
-        {
-            if (!ids.Contains(i))
-            {
-                return i;
-            }
-        }
-        return ids.Count + 1;
-    }
+    //public int CalculateMovieId()
+    //{
+    //    List<int> ids = new List<int>();
+    //    foreach (Movie movie in movies)
+    //    {
+    //        ids.Add(movie.MovieId);
+    //    }
+    //    for (int i = 1; i <= ids.Count; i++)
+    //    {
+    //        if (!ids.Contains(i))
+    //        {
+    //            return i;
+    //        }
+    //    }
+    //    return ids.Count + 1;
+    //}
     public void LoadFromFile()
     {
         if (!File.Exists(fileName))
@@ -73,7 +73,7 @@ public class MovieRepository
         for (int i = 0; i < lines.Length - 1; i++)
         {
             string[] attributes = lines[i].Split(';');
-            movies.Add(new Movie(int.Parse(attributes[0]), attributes[1], int.Parse(attributes[2]), attributes[3]));
+            movies.Add(new Movie(attributes[0], int.Parse(attributes[1]), attributes[2]));
         }
     }
     public void SaveToFile()
@@ -84,7 +84,7 @@ public class MovieRepository
             {
                 foreach (Movie movie in movies)
                 {
-                    writer.WriteLine($"{movie.MovieId};{movie.Title};{movie.Duration};{movie.Genre}");
+                    writer.WriteLine($"{movie.Title};{movie.Duration};{movie.Genre}");
                 }
             }
         }

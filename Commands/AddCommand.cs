@@ -7,6 +7,7 @@ using System.Windows.Input;
 using TheMovie.ViewModels;
 using TheMovie.Model;
 using System.Windows;
+using TheMovie.View;
 
 namespace TheMovie.Commands
 {
@@ -24,6 +25,12 @@ namespace TheMovie.Commands
             if (parameter is MainViewModel mvm)
             {
                 mvm.AddMovie();
+
+                if (mvm.SelectedMovie != null)
+                {
+                    DialogBox editMovieDialog = new DialogBox(mvm);
+                    editMovieDialog.ShowDialog();
+                }
             }
         }
     }

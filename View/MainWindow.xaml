@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="680"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
     <Grid Background="#FF070219">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0*" />
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
@@ -43,7 +46,6 @@
             <Label Content="Genre" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,304,0,0" Height="27"/>
 
             <StackPanel Orientation="Horizontal" Margin="10,373,10,0">
-
                 <Button Content="Tilføj ny film" Command="{Binding AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
                 <Button Content="Slet film" Command="{Binding DeleteCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Center" Margin="8,0,0,0" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
                 <Button Content="Gem ændringer" Command="{Binding SaveCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Right" Margin="8,0,0,0" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
