@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace TheMovie.Model
 {
-    public class Movie(string title, int? duration, string genre)
+    public class Movie(string title, int? duration, string genre): IEntity
     {
         public string Title { get; set; } = title;
         public int? Duration { get; set; } = duration;

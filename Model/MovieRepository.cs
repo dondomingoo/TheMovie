@@ -10,7 +10,7 @@ public class MovieRepository
     public MovieRepository(string fileName = "MovieDoc.csv")
     {
         this.fileName = fileName;
-        LoadFromFile();
+        LoadMovies();
     }
     //public void AddMovie(Movie movie)
     //{
@@ -31,7 +31,7 @@ public class MovieRepository
         //    }
         //}
         movies = movieList;
-        SaveToFile();
+        SaveMovies();
     }
     //public void DeleteMovie(Movie movie)
     //{
@@ -60,37 +60,17 @@ public class MovieRepository
     //    }
     //    return ids.Count + 1;
     //}
-    public void LoadFromFile()
+    public void LoadMovies()
     {
-        if (!File.Exists(fileName))
-        {
-            using StreamWriter sw = new(fileName);
-        }
-
-        using StreamReader sr = new(fileName);
-        string[] lines = sr.ReadToEnd().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-
+        string[] lines = DataHandler.LoadFromFile(fileName);
         for (int i = 0; i < lines.Length - 1; i++)
         {
             string[] attributes = lines[i].Split(';');
             movies.Add(new Movie(attributes[0], int.Parse(attributes[1]), attributes[2]));
         }
     }
-    public void SaveToFile()
+    public void SaveMovies()
     {
-        try
-        {
-            using (StreamWriter writer = new(fileName))
-            {
-                foreach (Movie movie in movies)
-                {
-                    writer.WriteLine($"{movie.Title};{movie.Duration};{movie.Genre}");
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Exception: " + e.Message);
-        }
+        DataHandler.SaveDataFile(movies, fileName);
     }
 }
