@@ -12,11 +12,11 @@ public class MovieRepository
         this.fileName = fileName;
         LoadFromFile();
     }
-    public void AddMovie(Movie movie)
-    {
-        movies.Add(movie);
-        SaveToFile();
-    }
+    //public void AddMovie(Movie movie)
+    //{
+    //    movies.Add(movie);
+    //    SaveToFile();
+    //}
     public List<Movie> GetMovies()
     {
         return movies;
