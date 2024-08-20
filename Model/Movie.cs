@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheMovie.Model
 {
-    public class Movie
+    public class Movie: IEntity
     {
         public string Title { get; set; }
         public int Duration { get; set; }
