@@ -21,5 +21,10 @@ namespace TheMovie.Model
         public Movie()
         {
         }
+
+        public override string ToString()
+        {
+            return $"{Title};{Duration};{Genre}";
+        }
     }
 }
