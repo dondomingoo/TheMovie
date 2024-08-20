@@ -67,7 +67,7 @@ namespace TheMovie.ViewModels
         public void SaveMovie()
         {
             UpdateMovieList();
-            movieRepository.SaveToFile();
+            movieRepository.SaveMovies();
         }
 
         //Metode der kalder på Update metoden i repository for at opdatere listen af film
