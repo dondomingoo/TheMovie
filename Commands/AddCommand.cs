@@ -26,7 +26,7 @@ namespace TheMovie.Commands
         {
             if (parameter is MainViewModel mvm)
             {
-                mvm.AddMovie(new Movie { Title="Title", Duration=0, Genre="Genre"});
+                mvm.AddMovie(new Movie { Title = "Title", DurationInMinutes = 0, Genre = "Genre", Director = "Instruktør", PremiereDate = DateTime.Today});
             }
         }
     }

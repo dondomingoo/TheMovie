@@ -1,0 +1,37 @@
+﻿<Window x:Class="TheMovie.View.ScheduleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheMovie.View"
+        mc:Ignorable="d"
+        Title="ScheduleWindow" Height="600" Width="1600">
+    <Grid Background="#FFD29000">
+        <ListBox ItemsSource="{Binding SelectedCinema.Playtimes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedPlayTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="26,79,575,135">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Movie.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                        <TextBlock Text=" " Width="50"/>
+                        <TextBlock Text="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                        <TextBlock Text=" " Width="50"/>
+                        <TextBlock Text="{Binding EndTime, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                        <TextBlock Text=" " Width="50"/>
+                        <TextBlock Text="{Binding Screen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="10"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ComboBox ItemsSource="{Binding Cinemas, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedCinema, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="1233,104,0,0" VerticalAlignment="Top" Width="320"/>
+        <Label Content="Biograf:" HorizontalAlignment="Left" Margin="1113,102,0,0" VerticalAlignment="Top"/>
+        <ComboBox ItemsSource="{Binding movieViewModels}" DisplayMemberPath="Title" SelectedItem="{Binding SelectedMovie, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="1233,195,0,0" VerticalAlignment="Top" Width="320"/>
+        <Label Content="Film:" HorizontalAlignment="Left" Margin="1113,193,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tidspunkt start:" HorizontalAlignment="Left" Margin="1113,242,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.059,-0.01" Width="99"/>
+        <Button Content="Tilføj film" Command="{Binding AddToScheduleCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="1339,366,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
+        <Button Content="Gem" Command="{Binding SaveScheduleCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="1113,366,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
+        <TextBox HorizontalAlignment="Left" Margin="1233,246,0,0" TextWrapping="Wrap" Text="{Binding SelectedPlayTime.StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="320"/>
+        <Label Content="Sal:" HorizontalAlignment="Left" Margin="1113,149,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="1233,153,0,0" TextWrapping="Wrap" Text="{Binding SelectedPlayTime.Screen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="320"/>
+
+    </Grid>
+</Window>

@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovie"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1100">
+        Title="MainWindow" Height="600" Width="1600">
     <Grid Background="#FFC88A6D">
-        <TextBox Text="{Binding SelectedMovie.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Text="{Binding SelectedMovie.Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Text="{Binding SelectedMovie.Genre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="748,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Tilføj Ny" Command="{Binding Path=AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="834,334,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
-        <Label Content="Navn:" HorizontalAlignment="Left" Margin="641,193,0,0" VerticalAlignment="Top"/>
-        <Label Content="Varighed:" HorizontalAlignment="Left" Margin="639,223,0,0" VerticalAlignment="Top"/>
-        <Label Content="Genre:" HorizontalAlignment="Left" Margin="639,255,0,0" VerticalAlignment="Top"/>
-        <ListBox ItemsSource="{Binding movieViewModels}" SelectedItem="{Binding SelectedMovie}" Margin="29,51,572,164">
+        <TextBox Text="{Binding SelectedMovie.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="1276,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding SelectedMovie.Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="1276,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding SelectedMovie.Genre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="1276,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Tilføj Ny" Command="{Binding Path=AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="1371,307,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
+        <Label Content="Navn:" HorizontalAlignment="Left" Margin="1169,107,0,0" VerticalAlignment="Top"/>
+        <Label Content="Varighed:" HorizontalAlignment="Left" Margin="1167,137,0,0" VerticalAlignment="Top"/>
+        <Label Content="Genre:" HorizontalAlignment="Left" Margin="1167,169,0,0" VerticalAlignment="Top"/>
+        <ListBox ItemsSource="{Binding movieViewModels}" SelectedItem="{Binding SelectedMovie}" Margin="29,51,583,164">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -23,12 +23,20 @@
                         <TextBlock Text="{Binding Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                         <TextBlock Text=" " Width="100"/>
                         <TextBlock Text="{Binding Genre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                        <TextBlock Text=" " Width="100"/>
+                        <TextBlock Text="{Binding Director, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                        <TextBlock Text=" " Width="100"/>
+                        <TextBlock Text="{Binding PremiereDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:yyyy-MM-dd}}" Width="100"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Gem" Command="{Binding SaveCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="594,334,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11"/>
-
+        <Button Content="Gem" Command="{Binding SaveCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="1122,307,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11" RenderTransformOrigin="0.489,1.721"/>
+        <Button Content="Ændrer program"  HorizontalAlignment="Left" Margin="1396,512,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11" Click="Button_Click"/>
+        <Label Content="Instruktør:" HorizontalAlignment="Left" Margin="1167,206,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="1276,210,0,0" TextWrapping="Wrap" Text="{Binding SelectedMovie.Director, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Premiere dato:" HorizontalAlignment="Left" Margin="1167,247,0,0" VerticalAlignment="Top"/>
+        <DatePicker SelectedDate="{Binding SelectedMovie.PremiereDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="1276,251,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

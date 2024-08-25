@@ -25,10 +25,10 @@ namespace TheMovie.ViewModels
         }
         public int Duration
         {
-            get => Movie.Duration;
+            get => Movie.DurationInMinutes;
             set
             {
-                Movie.Duration = value;
+                Movie.DurationInMinutes = value;
                 OnPropertyChanged();
             }
         }
@@ -38,6 +38,24 @@ namespace TheMovie.ViewModels
             set
             {
                 Movie.Genre = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Director
+        {
+            get => Movie.Director;
+            set
+            {
+                Movie.Director = value;
+                OnPropertyChanged();
+            }
+        }
+        public DateTime PremiereDate
+        {
+            get => Movie.PremiereDate;
+            set
+            {
+                Movie.PremiereDate = value;
                 OnPropertyChanged();
             }
         }
