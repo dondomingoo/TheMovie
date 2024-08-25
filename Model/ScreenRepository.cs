@@ -9,6 +9,7 @@ namespace TheMovie.Model
     public class ScreenRepository
     {
         private List<Screen> screens = [];
+        
         public ScreenRepository(string cinemaName, List<int> capacities)
         {
             for (int i = 0; i < capacities.Count; i++)

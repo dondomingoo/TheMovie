@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace TheMovie.Model
 {
-    public class Screen
+    public class Screen(string cinemaName, string screenname, int capacity)
     {
-        public string CinemaName {  get; set; }
-        public string Name { get; set; }
-        public int Capacity {  get; set; }
-        public PlayTimeRepository PlayTimes { get; set; }
-    
-    public Screen (string cinemaName, string screenname, int capacity)
-        {
-            CinemaName = cinemaName;
-            Name = screenname;
-            Capacity = capacity;
-            PlayTimes = new(cinemaName, screenname);
-        }
+        public string CinemaName { get; } = cinemaName;
+        public string Name { get; } = screenname;
+        public int Capacity { get; } = capacity;
+        public PlayTimeRepository PlayTimes { get; } = new(cinemaName, screenname);
     }
 }

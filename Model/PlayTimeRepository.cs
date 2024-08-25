@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheMovie.MVVM;
 
 namespace TheMovie.Model
 {
@@ -37,7 +38,7 @@ namespace TheMovie.Model
             for (int i = 1; i < lines.Length - 1; i++)
             {
                 string[] attributes = lines[i].Split(';');
-                PlayTimes.Add(new PlayTime(DateTime.Parse(attributes[0]), mR.GetMovie(int.Parse(attributes[3]))));
+                PlayTimes.Add(new PlayTime(DateTime.Parse(attributes[0]), mR.GetMovieFromId(int.Parse(attributes[3]))));
             }
         }
 

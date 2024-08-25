@@ -32,10 +32,6 @@ namespace TheMovie.ViewModels
         }
         public ObservableCollection<MovieViewModel> MoviesVM { get; set; }
 
-        public RelayCommand AddCommand => new RelayCommand(execute => AddMovie());
-        public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteMovie(), canExecute => SelectedMovie != null);
-        public RelayCommand SaveCommand => new RelayCommand(execute => SaveMovies());
-
         public MainWindowViewModel()
         {
             MoviesVM = [];
@@ -44,6 +40,10 @@ namespace TheMovie.ViewModels
                 MoviesVM.Add(new MovieViewModel(movie));
             }
         }
+
+        public RelayCommand AddCommand => new(execute => AddMovie());
+        public RelayCommand DeleteCommand => new(execute => DeleteMovie(), canExecute => SelectedMovie != null);
+        public RelayCommand SaveCommand => new(execute => SaveMovies());
 
         public void AddMovie()
         {
@@ -55,10 +55,11 @@ namespace TheMovie.ViewModels
 
             if (SelectedMovie != null)
             {
-                DialogBox editMovieDialog = new DialogBox();
+                DialogBox editMovieDialog = new();
                 editMovieDialog.ShowDialog();
             }
         }
+
         public void DeleteMovie()
         {
             if (CheckDeletion(SelectedMovie) == true)
@@ -68,12 +69,12 @@ namespace TheMovie.ViewModels
             else { MessageBox.Show("Filmen indgår i en eller flere spillelister. Filmen skal fjernes fra alle spillelister, inden den kan slettes."); }
         }
 
-        public bool CheckDeletion(MovieViewModel movieVM)
+        public static bool CheckDeletion(MovieViewModel movieVM)
         {
-            CinemaRepository cR = new CinemaRepository();
+            CinemaRepository cR = new();
             foreach (Cinema cinema in cR.GetCinemas())
             {
-                ScreenRepository sR = new ScreenRepository(cinema.Name, cinema.ScreenCapacities);
+                ScreenRepository sR = new(cinema.Name, cinema.ScreenCapacities);
                 foreach (Screen screen in sR.GetScreens())
                 {
                     PlayTimeRepository pR = new(cinema.Name, screen.Name);

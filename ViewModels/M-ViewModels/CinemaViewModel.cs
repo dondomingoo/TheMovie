@@ -9,9 +9,9 @@ namespace TheMovie.ViewModels
 {
     public class CinemaViewModel
     {
-        public Cinema Cinema { get; }
-        public string Name { get; }
-        public List<ScreenViewModel> Screens { get; }
+        public Cinema Cinema { get; set; }
+        public string Name { get; set; }
+        public List<ScreenViewModel> Screens { get; set; }
 
         public CinemaViewModel (Cinema cinema)
         {

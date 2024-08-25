@@ -6,23 +6,31 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using TheMovie.Model;
 
-namespace TheMovie.Model
+namespace TheMovie.MVVM
 {
-    internal class DataHandler
+    public class DataHandler
     {
         public static string[] LoadFromFile(string fileName)
         {
-            if (!File.Exists(fileName))
+            try
             {
-                using StreamWriter sw = new(fileName);
+                if (!File.Exists(fileName))
+                {
+                    using StreamWriter sw = new(fileName);
+                }
+                using StreamReader sr = new(fileName);
+                string[] lines = sr.ReadToEnd().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                return lines;
             }
-
-            using StreamReader sr = new(fileName);
-            string[] lines = sr.ReadToEnd().Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-
-            return lines;
+            catch (Exception e)
+            {
+                MessageBox.Show($"An error occurred: {e.GetType().Name} - {e.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw;
+            }
         }
+
         public static void SaveDataFile<T>(string headers, List<T> entities, string fileName) where T : IEntity
         {
             try

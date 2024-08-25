@@ -7,21 +7,15 @@ using System.Windows.Input;
 
 namespace TheMovie.MVVM
 {
-    public class RelayCommand : ICommand
+    public class RelayCommand(Action<object> execute, Predicate<object> canExecute = null) : ICommand
     {
-        private Action<object> execute;
-        private Predicate<object> canExecute;
+        private Action<object> execute = execute;
+        private Predicate<object> canExecute = canExecute;
 
         public event EventHandler? CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
-        }
-        
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
-        {
-            this.execute = execute;
-            this.canExecute = canExecute;
         }
 
         public bool CanExecute(object? parameter)

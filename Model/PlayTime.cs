@@ -10,7 +10,6 @@ namespace TheMovie.Model
     {
         public DateTime? StartTime { get; set; } = startTime;
         public Movie Movie { get; set; } = movie;
-        //public int Screen { get; set; }
 
         public override string ToString()
         {

@@ -27,6 +27,57 @@ namespace TheMovie.ViewModels
             }
         }
 
+        private CinemaRepository cR = new();
+        public ObservableCollection<CinemaViewModel> CinemasVM { get; set; }
+        private CinemaViewModel selectedCinema;
+        public CinemaViewModel SelectedCinema
+        {
+            get { return selectedCinema; }
+            set
+            {
+                if (selectedCinema != value)
+                {
+                    selectedCinema = value;
+                    OnPropertyChanged("SelectedCinema");
+                    PlayTimesVM.Clear();
+                    SelectedMovie = null;
+                    SelectedDate = null;
+                    SelectedTimeSpan = null;
+                }
+            }
+        }
+
+        private ScreenViewModel selectedScreen;
+        public ScreenViewModel SelectedScreen
+        {
+            get { return selectedScreen; }
+            set
+            {
+                if (selectedScreen != value)
+                {
+                    selectedScreen = value;
+                    OnPropertyChanged("SelectedScreen");
+                    CheckSelection();
+                }
+            }
+        }
+
+        private MovieRepository mR = new();
+        public ObservableCollection<MovieViewModel> MoviesVM { get; set; }
+        private MovieViewModel? selectedMovie;
+        public MovieViewModel? SelectedMovie
+        {
+            get { return selectedMovie; }
+            set
+            {
+                if (selectedMovie != value)
+                {
+                    selectedMovie = value;
+                    OnPropertyChanged("SelectedMovie");
+                }
+            }
+        }
+
         private string? selectedTimeSpan;
         public string? SelectedTimeSpan
         {
@@ -55,63 +106,6 @@ namespace TheMovie.ViewModels
             }
         }
 
-        private CinemaRepository cR = new();
-        public ObservableCollection<CinemaViewModel> CinemasVM { get; set; }
-        private CinemaViewModel selectedCinema;
-        public CinemaViewModel SelectedCinema
-        {
-            get { return selectedCinema; }
-            set
-            {
-                if (selectedCinema != value)
-                {
-                    selectedCinema = value;
-                    OnPropertyChanged("SelectedCinema");
-                    PlayTimesVM.Clear();
-                    SelectedMovie = null;
-                    SelectedDate = null;
-                    SelectedTimeSpan = null;
-                }
-            }
-        }
-
-
-        private ScreenViewModel selectedScreen;
-        public ScreenViewModel SelectedScreen
-        {
-            get { return selectedScreen; }
-            set
-            {
-                if (selectedScreen != value)
-                {
-                    selectedScreen = value;
-                    OnPropertyChanged("SelectedScreen");
-                    CheckSelection();
-                }
-            }
-        }
-
-
-        private MovieRepository mR = new();
-        public ObservableCollection<MovieViewModel> MoviesVM { get; set; }
-        private MovieViewModel? selectedMovie;
-        public MovieViewModel? SelectedMovie
-        {
-            get { return selectedMovie; }
-            set
-            {
-                if (selectedMovie != value)
-                {
-                    selectedMovie = value;
-                    OnPropertyChanged("SelectedMovie");
-                }
-            }
-        }
-
-        public RelayCommand AddCommand => new RelayCommand(execute => AddPlayTime(), canExecute => SelectedTimeSpan != null);
-        public RelayCommand DeleteCommand => new RelayCommand(execute => DeletePlayTime(), canExecute => SelectedPlayTime != null);
-        public RelayCommand ClearCommand => new RelayCommand(execute => ClearAllPlayTimes());
-
         public ScheduleViewModel()
         {
             CinemasVM = [];
@@ -127,27 +121,22 @@ namespace TheMovie.ViewModels
             }
 
             SelectedDate = null;
-
-            //if (selectedCinema != null)
-            //{
-            //    PlayTimesVM = [];
-            //    foreach (PlayTime playTime in pR.GetPlayTimes())
-            //    {
-            //        PlayTimesVM.Add(new PlayTimeViewModel(playTime));
-            //    }
-            //}
         }
+
+        public RelayCommand AddCommand => new(execute => AddPlayTime(), canExecute => SelectedTimeSpan != null);
+        public RelayCommand DeleteCommand => new(execute => DeletePlayTime(), canExecute => SelectedPlayTime != null);
+        public RelayCommand ClearCommand => new(execute => ClearAllPlayTimes());
 
         public void ClearAllPlayTimes()
         {
-            CinemaRepository cR = new CinemaRepository();
+            CinemaRepository cR = new();
             foreach (Cinema cinema in cR.GetCinemas())
             {
-                ScreenRepository sR = new ScreenRepository(cinema.Name, cinema.ScreenCapacities);
+                ScreenRepository sR = new(cinema.Name, cinema.ScreenCapacities);
                 foreach (Screen screen in sR.GetScreens())
                 {
                     PlayTimeRepository pR = new(cinema.Name, screen.Name);
-                    pR.UpdatePlayTimes(new List<PlayTime> { });
+                    pR.UpdatePlayTimes([]);
                 }
             }
             if (PlayTimesVM.Count != 0)
@@ -164,7 +153,7 @@ namespace TheMovie.ViewModels
                 PlayTimesVM.Clear();
                 foreach (PlayTime playTime in pR.GetPlayTimes())
                 {
-                    PlayTimesVM.Add(new PlayTimeViewModel(playTime));
+                    PlayTimesVM.Add(new(playTime));
                 }
             }
         }
@@ -186,10 +175,10 @@ namespace TheMovie.ViewModels
 
         public void DeletePlayTime()
         {
-            //mR.DeleteMovie(SelectedMovie.Movie);
             PlayTimesVM.Remove(SelectedPlayTime);
             SavePlayTimes();
         }
+
         public void SavePlayTimes()
         {
             List<PlayTime> playTimeList = [];

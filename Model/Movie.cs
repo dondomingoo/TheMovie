@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace TheMovie.Model
+﻿namespace TheMovie.Model
 {
     public class Movie(int? movieId, string title, int? duration, string genre): IEntity
     {
-        public int? MovieId { get; set; } = movieId;
+        public int? MovieId { get; } = movieId;
         public string Title { get; set; } = title;
         public int? Duration { get; set; } = duration;
         public string Genre { get; set; } = genre;
