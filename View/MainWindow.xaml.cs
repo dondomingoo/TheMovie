@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TheMovie.View;
 using TheMovie.ViewModels;
 
 namespace TheMovie
@@ -17,12 +18,19 @@ namespace TheMovie
     /// </summary>
     public partial class MainWindow : Window
     { 
-        private MainViewModel mvm = new();
+        public static MainWindowViewModel Mvm { get; } = new();
     
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = mvm;
+            DataContext = Mvm;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ScheduleView playTimeView = new();
+            playTimeView.Show();
+            this.Close();
         }
     }
 }

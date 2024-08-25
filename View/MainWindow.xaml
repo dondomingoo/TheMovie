@@ -11,15 +11,11 @@
 
     <Grid Background="#FF070219">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*" />
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        </Grid>
-
-        <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5">
+        <Grid Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5">
             <Label Content="Titel" HorizontalAlignment="Left" Margin="1,0,0,0" VerticalAlignment="Top" Foreground="White"/>
             <Label Content="Varighed" HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Top" Foreground="White"/>
             <Label Content="Genre" HorizontalAlignment="Left" Margin="202,0,0,0" VerticalAlignment="Top" Foreground="White"/>
@@ -36,10 +32,12 @@
             </ListBox>
         </Grid>
 
-        <Grid Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5,0,5">
-            <TextBox Text="{Binding SelectedMovie.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,246,0,0"/>
-            <TextBox Text="{Binding SelectedMovie.Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,277,0,0"/>
-            <TextBox Text="{Binding SelectedMovie.Genre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,309,0,0"/>
+        <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5,0,5">
+            <Button Content="Spilletider" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="74" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="256,0,0,371" Click="Button_Click"/>
+
+            <TextBox Text="{Binding SelectedMovie.Title, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,246,0,0"/>
+            <TextBox Text="{Binding SelectedMovie.Duration, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,277,0,0"/>
+            <TextBox Text="{Binding SelectedMovie.Genre, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,309,0,0"/>
 
             <Label Content="Titel" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,242,0,0"/>
             <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,273,0,0" RenderTransformOrigin="0.636,0.81"/>

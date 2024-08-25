@@ -18,14 +18,20 @@ namespace TheMovie.ViewModels
             set { duration = value; }
         }
         public string Genre { get; set; }
+        public string Dur { get; set; }
 
-        public MovieViewModel(Movie Movie)
+        public MovieViewModel(Movie movie)
         {
-            this.Movie = Movie;
-            Title = Movie.Title;
-            Duration = Movie.Duration;
-            Genre = Movie.Genre;
+            Movie = movie;
+            Title = movie.Title;
+            Duration = movie.Duration;
+            Genre = movie.Genre;
+            if (Duration.HasValue)
+            {
+                TimeSpan timeSpan = TimeSpan.FromMinutes(Duration.Value);
+                Dur = $"{timeSpan.Hours} timer og {timeSpan.Minutes} minutter";
+            }
+            
         }
-
     }
 }

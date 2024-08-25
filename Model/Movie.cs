@@ -8,15 +8,16 @@ using System.Xml.Linq;
 
 namespace TheMovie.Model
 {
-    public class Movie(string title, int? duration, string genre): IEntity
+    public class Movie(int? movieId, string title, int? duration, string genre): IEntity
     {
+        public int? MovieId { get; set; } = movieId;
         public string Title { get; set; } = title;
         public int? Duration { get; set; } = duration;
         public string Genre { get; set; } = genre;
 
         public override string ToString()
         {
-            return $"{Title};{Duration};{Genre}";
+            return $"{MovieId};{Title};{Duration};{Genre}";
         }
     }
 }

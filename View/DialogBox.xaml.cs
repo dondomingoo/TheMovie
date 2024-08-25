@@ -21,10 +21,10 @@ namespace TheMovie.View
     public partial class DialogBox : Window
     {
         //private MainViewModel mvm = new();
-        public DialogBox(MainViewModel mvm)
+        public DialogBox()
         {
             InitializeComponent();
-            DataContext = mvm;
+            DataContext = MainWindow.Mvm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -8,8 +8,20 @@ namespace TheMovie.Model
 {
     internal class CinemaRepository
     {
-        private List<Cinema> cinemas = new()
+        private List<Cinema> cinemas;
+
+        public CinemaRepository() {
+        cinemas = new()
         {
-           new Cinema("Hjerm", 1, ),
+           new Cinema("Hjerm", new List<int> {35}),
+           new Cinema("Videbæk", new List<int> {70}),
+           new Cinema("Thorsminde", new List<int> {25}),
+           new Cinema("Ræhr", new List<int> {30, 50})
         };
+        }
+        public List<Cinema> GetCinemas()
+        {
+            return cinemas;
+        }
+    }
 }

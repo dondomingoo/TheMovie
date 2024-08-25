@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace TheMovie.Model
 {
-    public class PlayTime
+    public class PlayTime(DateTime? startTime, Movie movie): IEntity
     {
-        public DateTime Start { get; set; }
-        public DateTime Date { get; set; }
-        public Movie Movie { get; set; }
-        public int Screen { get; set; }
+        public DateTime? StartTime { get; set; } = startTime;
+        public Movie Movie { get; set; } = movie;
+        //public int Screen { get; set; }
+
+        public override string ToString()
+        {
+            return $"{StartTime};{(StartTime + TimeSpan.FromMinutes(double.Parse(Movie.Duration.ToString()) + 15))?.ToString("HH:mm")};{Movie.Title};{Movie.MovieId}";
+        }
     }
 }

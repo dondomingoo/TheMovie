@@ -7,10 +7,18 @@ using System.Threading.Tasks;
 
 namespace TheMovie.Model
 {
-    public class Cinema (string name, int screen, PlayTimeRepository playTimes)
+    public class Cinema
     {
-        public string Name { get; set; } = name;
-        public int Screen { get; set; } = screen;
-        public PlayTimeRepository PlayTimes { get; set; } = playTimes;
+        public string Name { get; set; }
+        public ScreenRepository Screens { get; set; }
+        public List<int> ScreenCapacities { get; set; }
+
+
+        public Cinema(string name, List<int> capacities) 
+        {
+            Name = name;
+            ScreenCapacities = capacities;
+            Screens = new(name, capacities);
+        }
     }
 }

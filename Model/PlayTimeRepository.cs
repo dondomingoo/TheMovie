@@ -6,19 +6,44 @@ using System.Threading.Tasks;
 
 namespace TheMovie.Model
 {
-    public class PlayTimeRepository(string name)
+    public class PlayTimeRepository
     {
-        public string Name { get; set; } = name;
-        public List<PlayTime> PlayTimes { get; set; }
+        private MovieRepository mR = new MovieRepository();
+        public string CinemaName { get; set; }
+        public string ScreenName { get; set; }
+        public List<PlayTime> PlayTimes { get; set; } = [];
+
+        public PlayTimeRepository(string cinemaName, string screenName)
+        {
+            CinemaName = cinemaName;
+            ScreenName = screenName;
+            LoadPlayTimes();
+        }
+
+        public List<PlayTime> GetPlayTimes()
+        {
+            return PlayTimes;
+        }
+
+        public void UpdatePlayTimes(List<PlayTime> playTimeList)
+        {
+            PlayTimes = playTimeList;
+            SavePlayTimes();
+        }
 
         public void LoadPlayTimes()
         {
-            string[] lines = DataHandler.LoadFromFile((Name + "_PlayTimes"));
-            for (int i = 0; i < lines.Length - 1; i++)
+            string[] lines = DataHandler.LoadFromFile((CinemaName + "_" + ScreenName + "_Spilletider.csv"));
+            for (int i = 1; i < lines.Length - 1; i++)
             {
                 string[] attributes = lines[i].Split(';');
-                PlayTimes.Add(new Movie(attributes[0], int.Parse(attributes[1]), attributes[2]));
+                PlayTimes.Add(new PlayTime(DateTime.Parse(attributes[0]), mR.GetMovie(int.Parse(attributes[3]))));
             }
+        }
+
+        public void SavePlayTimes()
+        {
+            DataHandler.SaveDataFile("Spilletidspunkt;Rengøring;Titel;Film-id",PlayTimes, (CinemaName + "_" + ScreenName + "_Spilletider.csv"));
         }
     }
 }
