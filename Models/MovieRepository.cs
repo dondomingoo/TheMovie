@@ -7,7 +7,7 @@ namespace TheMovie.Models
         private List<Movie> movies = [];
         private string fileName;
 
-        public MovieRepository(string fileName = "MovieDoc.csv")
+        public MovieRepository(string fileName = "TheMovies.csv")
         {
             this.fileName = fileName;
             LoadMovies();

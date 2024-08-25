@@ -2,9 +2,6 @@
 
 namespace TheMovie.Views
 {
-    /// <summary>
-    /// Interaction logic for DialogBox.xaml
-    /// </summary>
     public partial class DialogBox : Window
     {
         //private MainViewModel mvm = new();

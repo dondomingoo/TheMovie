@@ -3,9 +3,6 @@ using TheMovie.ViewModels;
 
 namespace TheMovie.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     { 
         public static MainWindowViewModel Mvm { get; } = new();
