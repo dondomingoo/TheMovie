@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TheMovie.Model
+﻿namespace TheMovie.Models
 {
     public class Screen(string cinemaName, string screenname, int capacity)
     {

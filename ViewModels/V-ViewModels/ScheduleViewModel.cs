@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheMovie.Model;
+﻿using System.Collections.ObjectModel;
+using TheMovie.Models;
 using TheMovie.MVVM;
 
 namespace TheMovie.ViewModels

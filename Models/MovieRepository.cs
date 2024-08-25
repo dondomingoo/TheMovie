@@ -1,6 +1,6 @@
 ﻿using TheMovie.MVVM;
 
-namespace TheMovie.Model
+namespace TheMovie.Models
 {
     public class MovieRepository
     {

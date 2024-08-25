@@ -1,4 +1,4 @@
-﻿namespace TheMovie.Model
+﻿namespace TheMovie.Models
 {
     public class Movie(int? movieId, string title, int? duration, string genre): IEntity
     {

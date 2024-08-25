@@ -1,4 +1,4 @@
-﻿namespace TheMovie.Model
+﻿namespace TheMovie.Models
 {
     public class Cinema(string name, List<int> capacities)
     {

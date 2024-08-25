@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using TheMovie.Model;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using TheMovie.Models;
 
 namespace TheMovie.ViewModels
 {
