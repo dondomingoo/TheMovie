@@ -53,7 +53,7 @@
             <Label Content="Dato" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,80"/>
             <DatePicker Name="PremiereDatePicker" SelectedDate="{Binding SelectedDate}" IsEnabled="{Binding ElementName=MovieComboBox, Path=SelectedItem, TargetNullValue=False}"  Margin="118,0,17,80" VerticalAlignment="Bottom"/>
             <Label Content="Spilletidspunkt" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,50"/>
-            <ComboBox Name="TimeComboBox" SelectedValue="{Binding SelectedTimeSpan}" SelectedValuePath="Content" IsEnabled="{Binding ElementName=Calendar, Path=SelectedDate, TargetNullValue=False}" Margin="118,0,17,50" VerticalAlignment="Bottom">
+            <ComboBox Name="TimeComboBox" SelectedValue="{Binding SelectedTimeSpan}" SelectedValuePath="Content" IsEnabled="{Binding ElementName=PremiereDatePicker, Path=SelectedDate, TargetNullValue=False}" Margin="118,0,17,50" VerticalAlignment="Bottom">
                 <ComboBoxItem Content="Fra" IsEnabled="False"/>
                 <ComboBoxItem Content="12:00" />
                 <ComboBoxItem Content="12:30" />
