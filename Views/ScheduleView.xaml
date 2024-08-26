@@ -42,18 +42,18 @@
 
         <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5,0,5">
             <Button Content="Film" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="74" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="249,5,0,0" Click="Button_Click"/>
-            <Label Content="Biograf" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="7,44,0,0"/>
-            <ComboBox Name="CinemaComboBox" ItemsSource="{Binding CinemasVM}" SelectedItem="{Binding SelectedCinema}" DisplayMemberPath="Name" Margin="141,46,11,0" VerticalAlignment="Top"/>
-            <Label Content="Sal" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="7,74,0,0"/>
-            <ComboBox Name="ScreenComboBox" ItemsSource="{Binding SelectedCinema.Screens}" SelectedItem="{Binding SelectedScreen}" DisplayMemberPath="Name" IsEnabled="{Binding ElementName=CinemaComboBox, Path=SelectedItem, TargetNullValue=False}" Margin="141,76,11,0" VerticalAlignment="Top"/>
-            <Label Content="Film" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="7,104,0,0"/>
-            <ComboBox Name="MovieComboBox" ItemsSource="{Binding MoviesVM}" SelectedItem="{Binding SelectedMovie}" DisplayMemberPath="Title" IsEnabled="{Binding ElementName=ScreenComboBox, Path=SelectedItem, TargetNullValue=False}" Margin="141,106,11,0" VerticalAlignment="Top"/>
-            <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="7,132,0,0"/>
-            <TextBox Name="DurationTextBox" Text="{Binding SelectedMovie.Dur}" IsEnabled="{Binding ElementName=MovieComboBox, Path=SelectedItem, TargetNullValue=False}" IsReadOnly="True" Margin="141,136,11,0" VerticalAlignment="Top"/>
-            <Label Content="Dato" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="7,165,0,0"/>
-            <Calendar Name="Calendar" SelectedDate="{Binding SelectedDate}" IsEnabled="{Binding ElementName=MovieComboBox, Path=SelectedItem, TargetNullValue=False}" HorizontalAlignment="Left" Margin="141,163,0,0" VerticalAlignment="Top"/>
-            <Label Content="Spilletidspunkt" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="7,334,0,0"/>
-            <ComboBox Name="TimeComboBox" SelectedValue="{Binding SelectedTimeSpan}" SelectedValuePath="Content" IsEnabled="{Binding ElementName=Calendar, Path=SelectedDate, TargetNullValue=False}" Margin="141,336,11,0" VerticalAlignment="Top">
+            <Label Content="Biograf" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,200"/>
+            <ComboBox Name="CinemaComboBox" ItemsSource="{Binding CinemasVM}" SelectedItem="{Binding SelectedCinema}" DisplayMemberPath="Name" Margin="118,0,17,200" VerticalAlignment="Bottom"/>
+            <Label Content="Sal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,170"/>
+            <ComboBox Name="ScreenComboBox" ItemsSource="{Binding SelectedCinema.Screens}" SelectedItem="{Binding SelectedScreen}" DisplayMemberPath="Name" IsEnabled="{Binding ElementName=CinemaComboBox, Path=SelectedItem, TargetNullValue=False}" Margin="118,0,17,170" VerticalAlignment="Bottom"/>
+            <Label Content="Film" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,140"/>
+            <ComboBox Name="MovieComboBox" ItemsSource="{Binding MoviesVM}" SelectedItem="{Binding SelectedMovie}" DisplayMemberPath="Title" IsEnabled="{Binding ElementName=ScreenComboBox, Path=SelectedItem, TargetNullValue=False}" Margin="118,0,17,140" VerticalAlignment="Bottom"/>
+            <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,110"/>
+            <TextBox Name="DurationTextBox" Text="{Binding SelectedMovie.Dur}" IsEnabled="{Binding ElementName=MovieComboBox, Path=SelectedItem, TargetNullValue=False}" IsReadOnly="True" Margin="118,0,17,112" VerticalAlignment="Bottom"/>
+            <Label Content="Dato" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,80"/>
+            <DatePicker Name="PremiereDatePicker" SelectedDate="{Binding SelectedDate}" IsEnabled="{Binding ElementName=MovieComboBox, Path=SelectedItem, TargetNullValue=False}" HorizontalAlignment="Left" Margin="118,0,0,80" VerticalAlignment="Bottom" Width="205"/>
+            <Label Content="Spilletidspunkt" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,50"/>
+            <ComboBox Name="TimeComboBox" SelectedValue="{Binding SelectedTimeSpan}" SelectedValuePath="Content" IsEnabled="{Binding ElementName=Calendar, Path=SelectedDate, TargetNullValue=False}" Margin="118,0,17,50" VerticalAlignment="Bottom">
                 <ComboBoxItem Content="Fra" IsEnabled="False"/>
                 <ComboBoxItem Content="12:00" />
                 <ComboBoxItem Content="12:30" />

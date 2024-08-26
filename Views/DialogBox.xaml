@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TheMovie.Views"
         mc:Ignorable="d"
         Title="Tilføj Film"
-        MinHeight="320"
+        MinHeight="200"
         MinWidth="300"
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
@@ -14,10 +14,12 @@
         WindowStartupLocation="CenterOwner" >
     <Grid Margin="10">
         <Grid.Resources>
-            <!-- Default settings for controls -->
             <Style TargetType="{x:Type Label}">
                 <Setter Property="Margin" Value="0,3,5,5" />
                 <Setter Property="Padding" Value="0,0,0,5" />
+            </Style>
+            <Style TargetType="{x:Type DatePicker}">
+                <Setter Property="Margin" Value="0,3,0,5" />
             </Style>
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="Margin" Value="0,0,0,5" />
@@ -60,7 +62,7 @@
         <TextBox Name="DirectorTextBox" Text="{Binding SelectedMovie.Director}" Grid.Column="1" Grid.Row="3" />
 
         <Label Grid.Column="0" Grid.Row="4">Premieredato</Label>
-        <Calendar Name="PremiereDateCalendar" SelectedDate="{Binding SelectedMovie.PremiereDate, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" />
+        <DatePicker Name="PremiereDatePicker" SelectedDate="{Binding SelectedMovie.PremiereDate, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4"/>
 
         <!-- Accept or Cancel -->
         <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right">

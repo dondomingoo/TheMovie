@@ -49,17 +49,16 @@
         <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5,0,5">
             <Button Content="Spilletider" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="74" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="249,5,0,0" Click="Button_Click"/>
 
-            <TextBox Text="{Binding SelectedMovie.Title, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Background="#FFE6E6E6" Margin="142,76,0,0"/>
-            <TextBox Text="{Binding SelectedMovie.Duration, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Background="#FFE6E6E6" Margin="142,107,0,0"/>
-            <TextBox Text="{Binding SelectedMovie.Genre, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Background="#FFE6E6E6" Margin="142,139,0,0"/>
-            <TextBox Text="{Binding SelectedMovie.Director, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Background="#FFE6E6E6" Margin="142,169,0,0"/>
-            <Calendar SelectedDate="{Binding SelectedMovie.PremiereDate, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" Margin="142,200,0,0" VerticalAlignment="Top"/>
-            
-            <Label Content="Titel" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,72,0,0"/>
-            <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,103,0,0"/>
-            <Label Content="Genre" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,135,0,0"/>
-            <Label Content="Instruktør" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,165,0,0"/>
-            <Label Content="Premieredato" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,195,0,0"/>
+            <Label Content="Titel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,170"/>
+            <TextBox Text="{Binding SelectedMovie.Title, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="205" Background="#FFE6E6E6" Margin="118,0,0,170"/>
+            <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,140"/>
+            <TextBox Text="{Binding SelectedMovie.Duration, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="205" Background="#FFE6E6E6" Margin="118,0,0,140"/>
+            <Label Content="Genre" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,110"/>
+            <TextBox Text="{Binding SelectedMovie.Genre, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="205" Background="#FFE6E6E6" Margin="118,0,0,110"/>
+            <Label Content="Instruktør" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,80"/>
+            <TextBox Text="{Binding SelectedMovie.Director, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="205" Background="#FFE6E6E6" Margin="118,0,0,80"/>
+            <Label Content="Premieredato" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,50"/>
+            <DatePicker Name="PremiereDatePicker" SelectedDate="{Binding SelectedMovie.PremiereDate, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" Margin="118,0,0,50" VerticalAlignment="Bottom" Width="205"/>
 
             <StackPanel Orientation="Horizontal" Margin="10,373,10,0">
                 <Button Content="Tilføj ny film" Command="{Binding AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
