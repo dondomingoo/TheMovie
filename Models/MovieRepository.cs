@@ -61,13 +61,13 @@ namespace TheMovie.Models
             for (int i = 1; i < lines.Length - 1; i++)
             {
                 string[] attributes = lines[i].Split(';');
-                movies.Add(new Movie(int.Parse(attributes[0]), attributes[1], int.Parse(attributes[2]), attributes[3]));
+                movies.Add(new Movie(int.Parse(attributes[0]), attributes[1], int.Parse(attributes[2]), attributes[3], attributes[4], DateTime.Parse(attributes[5])));
             }
         }
 
         public void SaveMovies()
         {
-            DataHandler.SaveDataFile("Film-id;Titel;Varighed (min.);Genre", movies, fileName);
+            DataHandler.SaveDataFile("Film-id;Titel;Varighed (min.);Genre;Instruktør;Premieredato", movies, fileName);
         }
     }
 }

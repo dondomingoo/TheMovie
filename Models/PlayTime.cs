@@ -7,7 +7,7 @@
 
         public override string ToString()
         {
-            return $"{StartTime};{(StartTime + TimeSpan.FromMinutes(double.Parse(Movie.Duration.ToString()) + 15))?.ToString("HH:mm")};{Movie.Title};{Movie.MovieId}";
+            return $"{StartTime};{(StartTime + TimeSpan.FromMinutes(double.Parse(Movie.Duration.ToString()) + 15))?.ToString("HH:mm")};{Movie.Title};{Movie.Genre};{Movie.Director};{Movie.PremiereDate};{Movie.MovieId}";
         }
     }
 }

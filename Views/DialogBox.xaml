@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TheMovie.Views"
         mc:Ignorable="d"
         Title="Tilføj Film"
-        MinHeight="145"
+        MinHeight="320"
         MinWidth="300"
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize"
@@ -40,6 +40,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -53,8 +56,14 @@
         <Label Grid.Column="0" Grid.Row="2">Genre</Label>
         <TextBox Name="GenreTextBox" Text="{Binding SelectedMovie.Genre}" Grid.Column="1" Grid.Row="2" />
 
+        <Label Grid.Column="0" Grid.Row="3">Instruktør</Label>
+        <TextBox Name="DirectorTextBox" Text="{Binding SelectedMovie.Director}" Grid.Column="1" Grid.Row="3" />
+
+        <Label Grid.Column="0" Grid.Row="4">Premieredato</Label>
+        <Calendar Name="PremiereDateCalendar" SelectedDate="{Binding SelectedMovie.PremiereDate, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" />
+
         <!-- Accept or Cancel -->
-        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Tilføj" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Click="Button_Click"/>
             <Button Content="Annuller" Name="cancelButton" Command="{Binding DeleteCommand}" CommandParameter="{Binding}" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Click="cancelButton_Click"/>
         </StackPanel>

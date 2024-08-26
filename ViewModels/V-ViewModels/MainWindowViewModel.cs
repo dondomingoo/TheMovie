@@ -40,7 +40,7 @@ namespace TheMovie.ViewModels
         public void AddMovie()
         {
             int iD = mR.CalculateMovieId();
-            Movie movie = new(iD, "", null, "");
+            Movie movie = new(iD, "", null, "", "", null);
             MovieViewModel mVM = new(movie);
             MoviesVM.Add(mVM);
             SelectedMovie = mVM;
@@ -89,6 +89,8 @@ namespace TheMovie.ViewModels
                 movieViewModel.Movie.Title = movieViewModel.Title;
                 movieViewModel.Movie.Duration = movieViewModel.Duration;
                 movieViewModel.Movie.Genre = movieViewModel.Genre;
+                movieViewModel.Movie.Director = movieViewModel.Director;
+                movieViewModel.Movie.PremiereDate = movieViewModel.PremiereDate;
             }
 
             List<Movie> movieList = [];

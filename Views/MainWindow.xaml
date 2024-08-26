@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovie.Views"
         mc:Ignorable="d"
-        Title="Filmoversigt" Height="450" Width="680"
+        Title="Filmoversigt" Height="450" Width="1020"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
     <Grid Background="#FF070219">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
@@ -23,18 +23,22 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" Background="#FFC0C0C0" Grid.Row="0">
-                    <TextBlock Text="Titel" Width="100" FontWeight="Bold" HorizontalAlignment="Center" Margin="7,0,0,0"/>
+                    <TextBlock Text="Titel" Width="150" FontWeight="Bold" HorizontalAlignment="Center" Margin="7,0,0,0"/>
                     <TextBlock Text="Varighed i min." Width="100" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
-                    <TextBlock Text="Genre" Width="100" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                    <TextBlock Text="Genre" Width="150" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                    <TextBlock Text="Instruktør" Width="150" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                    <TextBlock Text="Premieredato" Width="100" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
                 </StackPanel>
 
                 <ListBox ItemsSource="{Binding MoviesVM}" SelectedItem="{Binding SelectedMovie}" Background="#FFE6E6E6" Grid.Row="1" Margin="0,0,0,0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                                <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
                                 <TextBlock Text="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
-                                <TextBlock Text="{Binding Genre, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                                <TextBlock Text="{Binding Genre, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                                <TextBlock Text="{Binding Director, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                                <TextBlock Text="{Binding PremiereDate, StringFormat={}{0:dd-MM-yyyy}, UpdateSourceTrigger=PropertyChanged}" Width="90"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
@@ -45,13 +49,17 @@
         <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5,0,5">
             <Button Content="Spilletider" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="74" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="249,5,0,0" Click="Button_Click"/>
 
-            <TextBox Text="{Binding SelectedMovie.Title, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,246,0,0"/>
-            <TextBox Text="{Binding SelectedMovie.Duration, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,277,0,0"/>
-            <TextBox Text="{Binding SelectedMovie.Genre, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FFE6E6E6" Margin="75,309,0,0"/>
-
-            <Label Content="Titel" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,242,0,0"/>
-            <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,273,0,0" RenderTransformOrigin="0.636,0.81"/>
-            <Label Content="Genre" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,304,0,0" Height="27"/>
+            <TextBox Text="{Binding SelectedMovie.Title, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Background="#FFE6E6E6" Margin="142,76,0,0"/>
+            <TextBox Text="{Binding SelectedMovie.Duration, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Background="#FFE6E6E6" Margin="142,107,0,0"/>
+            <TextBox Text="{Binding SelectedMovie.Genre, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Background="#FFE6E6E6" Margin="142,139,0,0"/>
+            <TextBox Text="{Binding SelectedMovie.Director, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" Background="#FFE6E6E6" Margin="142,169,0,0"/>
+            <Calendar SelectedDate="{Binding SelectedMovie.PremiereDate, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedMovie, TargetNullValue=False}" HorizontalAlignment="Left" Margin="142,200,0,0" VerticalAlignment="Top"/>
+            
+            <Label Content="Titel" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,72,0,0"/>
+            <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,103,0,0"/>
+            <Label Content="Genre" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,135,0,0"/>
+            <Label Content="Instruktør" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,165,0,0"/>
+            <Label Content="Premieredato" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,195,0,0"/>
 
             <StackPanel Orientation="Horizontal" Margin="10,373,10,0">
                 <Button Content="Tilføj ny film" Command="{Binding AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>

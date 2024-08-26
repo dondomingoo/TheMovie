@@ -33,13 +33,13 @@ namespace TheMovie.Models
             for (int i = 1; i < lines.Length - 1; i++)
             {
                 string[] attributes = lines[i].Split(';');
-                PlayTimes.Add(new PlayTime(DateTime.Parse(attributes[0]), mR.GetMovieFromId(int.Parse(attributes[3]))));
+                PlayTimes.Add(new PlayTime(DateTime.Parse(attributes[0]), mR.GetMovieFromId(int.Parse(attributes[6]))));
             }
         }
 
         public void SavePlayTimes()
         {
-            DataHandler.SaveDataFile("Spilletidspunkt;Rengøring;Titel;Film-id",PlayTimes, (CinemaName + "_" + ScreenName + "_Spilletider.csv"));
+            DataHandler.SaveDataFile("Spilletidspunkt;Rengøring;Titel;Genre;Instruktør;Premieredato;Film-id",PlayTimes, (CinemaName + "_" + ScreenName + "_Spilletider.csv"));
         }
     }
 }

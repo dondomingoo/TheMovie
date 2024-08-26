@@ -14,6 +14,8 @@ namespace TheMovie.ViewModels
         }
         public string Genre { get; set; }
         public string? Dur { get; set; }
+        public string Director { get; set; }
+        public DateTime? PremiereDate { get; set; }
 
         public MovieViewModel(Movie movie)
         {
@@ -21,6 +23,8 @@ namespace TheMovie.ViewModels
             Title = movie.Title;
             Duration = movie.Duration;
             Genre = movie.Genre;
+            Director = movie.Director;
+            PremiereDate = movie.PremiereDate;
             if (Duration.HasValue)
             {
                 TimeSpan timeSpan = TimeSpan.FromMinutes(Duration.Value);

@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TheMovie.Views"
         mc:Ignorable="d"
-                Title="Spilletider" Height="450" Width="680"
+                Title="Spilletider" Height="450" Width="1020"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
     <Grid Background="#FF070219">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
