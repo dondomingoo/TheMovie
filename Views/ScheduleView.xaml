@@ -51,7 +51,7 @@
             <Label Content="Varighed" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,110"/>
             <TextBox Name="DurationTextBox" Text="{Binding SelectedMovie.Dur}" IsEnabled="{Binding ElementName=MovieComboBox, Path=SelectedItem, TargetNullValue=False}" IsReadOnly="True" Margin="118,0,17,112" VerticalAlignment="Bottom"/>
             <Label Content="Dato" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,80"/>
-            <DatePicker Name="PremiereDatePicker" SelectedDate="{Binding SelectedDate}" IsEnabled="{Binding ElementName=MovieComboBox, Path=SelectedItem, TargetNullValue=False}" HorizontalAlignment="Left" Margin="118,0,0,80" VerticalAlignment="Bottom" Width="205"/>
+            <DatePicker Name="PremiereDatePicker" SelectedDate="{Binding SelectedDate}" IsEnabled="{Binding ElementName=MovieComboBox, Path=SelectedItem, TargetNullValue=False}"  Margin="118,0,17,80" VerticalAlignment="Bottom"/>
             <Label Content="Spilletidspunkt" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,50"/>
             <ComboBox Name="TimeComboBox" SelectedValue="{Binding SelectedTimeSpan}" SelectedValuePath="Content" IsEnabled="{Binding ElementName=Calendar, Path=SelectedDate, TargetNullValue=False}" Margin="118,0,17,50" VerticalAlignment="Bottom">
                 <ComboBoxItem Content="Fra" IsEnabled="False"/>
