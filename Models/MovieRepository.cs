@@ -38,23 +38,6 @@ namespace TheMovie.Models
             SaveMovies();
         }
 
-        public int CalculateMovieId()
-        {
-            List<int?> ids = new List<int?>();
-            foreach (Movie movie in movies)
-            {
-                ids.Add(movie.MovieId);
-            }
-            for (int i = 1; i <= ids.Count; i++)
-            {
-                if (!ids.Contains(i))
-                {
-                    return i;
-                }
-            }
-            return ids.Count + 1;
-        }
-
         public void LoadMovies()
         {
             string[] lines = DataHandler.LoadFromFile(fileName);

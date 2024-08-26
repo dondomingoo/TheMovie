@@ -38,9 +38,26 @@ namespace TheMovie.ViewModels.V_ViewModels
         public RelayCommand DeleteCommand => new(execute => DeleteMovie(), canExecute => SelectedMovie != null);
         public RelayCommand SaveCommand => new(execute => SaveMovies());
 
+        public int CalculateMovieId()
+        {
+            List<int?> ids = new List<int?>();
+            foreach (Movie movie in mR.GetMovies())
+            {
+                ids.Add(movie.MovieId);
+            }
+            for (int i = 1; i <= ids.Count; i++)
+            {
+                if (!ids.Contains(i))
+                {
+                    return i;
+                }
+            }
+            return ids.Count + 1;
+        }
+
         public void AddMovie()
         {
-            int iD = mR.CalculateMovieId();
+            int iD = CalculateMovieId();
             Movie movie = new(iD, "", null, "", "", null);
             MovieViewModel mVM = new(movie);
             MoviesVM.Add(mVM);
