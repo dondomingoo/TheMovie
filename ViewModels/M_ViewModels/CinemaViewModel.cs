@@ -1,6 +1,6 @@
 ﻿using TheMovie.Models;
 
-namespace TheMovie.ViewModels
+namespace TheMovie.ViewModels.M_ViewModels
 {
     public class CinemaViewModel
     {
@@ -8,7 +8,7 @@ namespace TheMovie.ViewModels
         public string Name { get; set; }
         public List<ScreenViewModel> Screens { get; set; }
 
-        public CinemaViewModel (Cinema cinema)
+        public CinemaViewModel(Cinema cinema)
         {
             Cinema = cinema;
             Name = cinema.Name;

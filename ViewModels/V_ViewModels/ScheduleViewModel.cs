@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using TheMovie.Models;
 using TheMovie.MVVM;
+using TheMovie.ViewModels.M_ViewModels;
 
-namespace TheMovie.ViewModels
+namespace TheMovie.ViewModels.V_ViewModels
 {
-    public class ScheduleViewModel: ViewModelBase
+    public class ScheduleViewModel : ViewModelBase
     {
         private PlayTimeRepository pR;
         public ObservableCollection<PlayTimeViewModel> PlayTimesVM { get; set; } = [];
@@ -108,7 +109,7 @@ namespace TheMovie.ViewModels
             {
                 CinemasVM.Add(new CinemaViewModel(cinema));
             }
-            
+
             MoviesVM = [];
             foreach (Movie movie in mR.GetMovies())
             {

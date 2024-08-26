@@ -2,11 +2,12 @@
 using System.Windows;
 using TheMovie.Models;
 using TheMovie.MVVM;
+using TheMovie.ViewModels.M_ViewModels;
 using TheMovie.Views;
 
-namespace TheMovie.ViewModels
+namespace TheMovie.ViewModels.V_ViewModels
 {
-    public class MainWindowViewModel: ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
     {
         private MovieRepository mR = new();
         private MovieViewModel selectedMovie;

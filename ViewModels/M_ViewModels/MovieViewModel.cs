@@ -1,6 +1,6 @@
 ﻿using TheMovie.Models;
 
-namespace TheMovie.ViewModels
+namespace TheMovie.ViewModels.M_ViewModels
 {
     public class MovieViewModel
     {

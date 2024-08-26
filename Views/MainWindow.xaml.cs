@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using TheMovie.ViewModels;
+using TheMovie.ViewModels.V_ViewModels;
 
 namespace TheMovie.Views
 {
