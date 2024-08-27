@@ -11,7 +11,7 @@ namespace TheMovie.Model
         public string Title { get; set; }
         public int DurationInMinutes { get; set; }
         public string Genre { get; set; }
-        public TimeSpan Duration => TimeSpan.FromMinutes(DurationInMinutes);
+        public TimeSpan Duration => TimeSpan.FromMinutes(DurationInMinutes); // Duration property som returnerer DurationInMinutes i TimeSpan format.
         public string Director { get; set; }
         public DateTime PremiereDate { get; set; }
 

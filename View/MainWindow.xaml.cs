@@ -17,7 +17,7 @@ namespace TheMovie
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    { 
+    {
         MainViewModel mvm = new MainViewModel();
         //MainWindow klassen er en partial klasse, som er en del af MainWindow klassen
         //InitializeComponent metoden initialiserer MainWindow klassen og DateContext sætter DataContext til MainViewModel

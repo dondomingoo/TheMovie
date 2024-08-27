@@ -27,6 +27,7 @@ namespace TheMovie.ViewModels
         private DateTime _selectedDate; //Den valgte dato i viewet
         private DateTime _selectedTime; //Den valgte tid i viewet
         private string _selectedScreen; //Den valgte sal i viewet
+        private int _SelectedSeats; //Den valgte antal sæder i viewet
 
 
 
@@ -102,6 +103,16 @@ namespace TheMovie.ViewModels
             }
         }
 
+        public int SelectedSeats
+        {
+            get { return _SelectedSeats; }
+            set
+            {
+                _SelectedSeats = value;
+                OnPropertyChanged(nameof(SelectedSeats));
+            }
+        }
+
 
 
         public ICommand AddCommand { get; set; } //Kommando til at tilføje en ny film til listen af film
@@ -131,6 +142,7 @@ namespace TheMovie.ViewModels
 
             SelectedTime = DateTime.Now;
             SelectedScreen = "1";
+            SelectedSeats = 50;
 
         }
         

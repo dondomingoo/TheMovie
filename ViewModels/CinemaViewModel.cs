@@ -78,6 +78,8 @@ namespace TheMovie.ViewModels
                 worksheet.Cells[1, 5].Value = "Premiere dato";
                 worksheet.Cells[1, 6].Value = "Instruktør";
                 worksheet.Cells[1, 7].Value = "Varighed";
+                worksheet.Cells[1, 8].Value = "Antal sæder i alt";
+                worksheet.Cells[1, 9].Value = "Antal ledige sæder";
 
 
                 int row = 2;
@@ -89,7 +91,10 @@ namespace TheMovie.ViewModels
                     worksheet.Cells[row, 4].Value = playTime.Screen;
                     worksheet.Cells[row, 5].Value = playTime.Movie.PremiereDate.ToString("d");
                     worksheet.Cells[row, 6].Value = playTime.Movie.Director;
-                    worksheet.Cells[row, 7].Value = playTime.Movie.Duration.ToString("g");
+                    worksheet.Cells[row, 7].Value = playTime.Movie.Duration.ToString("g"); // Duration property som returnerer DurationInMinutes i TimeSpan format. "g" format specifier bruges til at formatere TimeSpan objektet til en string.
+                    worksheet.Cells[row, 8].Value = playTime.Seats;
+                    worksheet.Cells[row, 9].Value = playTime.AvailableSeats;
+
 
                     row++;
                 }
@@ -129,6 +134,7 @@ namespace TheMovie.ViewModels
                     var date = DateTime.Parse(worksheet.Cells[row, 5].Value.ToString());
                     var director = worksheet.Cells[row, 6].Value.ToString();
                     var duration = TimeSpan.Parse(worksheet.Cells[row, 7].Value.ToString());
+                    var seats = int.Parse(worksheet.Cells[row, 8].Value.ToString());
 
                     var movie = new Movie { Title = movieTitle };
                     PlayTimes.Add(new PlayTime

@@ -18,6 +18,8 @@
                         <TextBlock Text="{Binding EndTime, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
                         <TextBlock Text=" " Width="50"/>
                         <TextBlock Text="{Binding Screen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="10"/>
+                        <TextBlock Text=" " Width="50"/>
+                        <TextBlock Text="{Binding AvailableSeats, Mode=oneWay, UpdateSourceTrigger=PropertyChanged}" Width="10"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -32,6 +34,9 @@
         <TextBox HorizontalAlignment="Left" Margin="1233,246,0,0" TextWrapping="Wrap" Text="{Binding SelectedPlayTime.StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="320"/>
         <Label Content="Sal:" HorizontalAlignment="Left" Margin="1113,149,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="1233,153,0,0" TextWrapping="Wrap" Text="{Binding SelectedPlayTime.Screen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="320"/>
+        <Label Content="Antal pladser:" HorizontalAlignment="Left" Margin="1113,288,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="1233,292,0,0" TextWrapping="Wrap" Text="{Binding SelectedPlayTime.Seats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="320"/>
+        <Button Content="Tilføj Reservation" Command="{Binding SaveScheduleCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="1393,517,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11" Click="Button_Click" IsEnabled="{Binding SelectedCPlayTime}"/>
 
     </Grid>
 </Window>

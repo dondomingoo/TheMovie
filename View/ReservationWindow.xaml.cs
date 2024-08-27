@@ -15,22 +15,17 @@ using TheMovie.ViewModels;
 
 namespace TheMovie.View
 {
+    
     /// <summary>
-    /// Interaction logic for ScheduleWindow.xaml
+    /// Interaction logic for ReservationWindow.xaml
     /// </summary>
-    public partial class ScheduleWindow : Window
+    public partial class ReservationWindow : Window
     {
         MainViewModel mvm = new MainViewModel();
-        public ScheduleWindow()
+        public ReservationWindow()
         {
             InitializeComponent();
             DataContext = mvm;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ReservationWindow reservationWindow = new ReservationWindow();
-            reservationWindow.Show();
         }
     }
 }
