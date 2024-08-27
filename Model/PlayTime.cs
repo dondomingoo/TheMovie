@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,5 +17,6 @@ namespace TheMovie.Model
         public int Seats { get; set; }
         public int ReservedSeats { get; set; }
         public int AvailableSeats => Seats - ReservedSeats; // AvailableSeats property som returnerer antal sæder minus antal bookinger.
+        public ReadOnlyObservableCollection<Reservation> Reservations { get; set; }
     }
 }

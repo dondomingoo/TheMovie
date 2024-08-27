@@ -11,6 +11,7 @@ namespace TheMovie.Model
     {
         public string Name { get; set; }
         public ObservableCollection<PlayTime> PlayTimes { get; set; }
+        
     }
     //public class Cinema som indeholder en liste af PlayTime objekter og et navn.
 }
