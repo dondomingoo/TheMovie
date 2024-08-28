@@ -26,10 +26,10 @@ namespace TheMovie.Commands
                 {
                     var newReservation = new Reservation
                     {
-                        TicketAmount = mvm.SelectedTicketAmount,
-                        Customer.Name = mvm.SelectedCustomerName,
-                        Customer.PhoneNumber = mvm.SelectedCustomerPhoneNumber
-                        Customer.Email = mvm.SelectedCustomerEmail
+                        //TicketAmount = mvm.SelectedTicketAmount,
+                        //Customer.Name = mvm.SelectedCustomerName,
+                        //Customer.PhoneNumber = mvm.SelectedCustomerPhoneNumber
+                        //Customer.Email = mvm.SelectedCustomerEmail
                     };
                 }
             }

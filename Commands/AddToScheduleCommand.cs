@@ -31,7 +31,6 @@ namespace TheMovie.Commands
                     {
                         Movie = mvm.SelectedMovie.Movie,
                         StartTime = mvm.SelectedTime,
-                        Date = mvm.SelectedDate,
                         Screen = mvm.SelectedScreen
                     };
                     mvm.SelectedCinema.PlayTimes.Add(newPlayTime);

@@ -14,7 +14,6 @@ namespace TheMovie.Model
         public Movie Movie { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime => StartTime.Add(Movie.Duration).AddMinutes(30); // EndTime property som returnerer StartTime + Duration + 30 minutter.
-        public DateTime Date { get; set; }
         public string Screen { get; set; }
         //public int Seats { get; set; }
         //public int ReservedSeats { get; set; }

@@ -22,15 +22,13 @@ namespace TheMovie.ViewModels
         public ObservableCollection<PlayTime> PlayTimes => Cinema.PlayTimes; // PlayTimes property som returnerer Cinema.PlayTimes og bruges til at binde til viewet.
 
 
-        public ICommand SaveScheduleCommand { get; private set; }
-        public ICommand AddToScheduleCommand { get; private set; }
+        
 
-        //Constructor som tager en Cinema som parameter og initialiserer Cinema property og SaveScheduleCommand og AddToScheduleCommand.
+        //Constructor som tager en Cinema som parameter og initialiserer Cinema property.
         public CinemaViewModel(Cinema cinema)
         {
             Cinema = cinema;
-            SaveScheduleCommand = new SaveScheduleCommand();
-            AddToScheduleCommand = new AddToScheduleCommand();
+            
 
             if (Cinema.PlayTimes == null)
             {
