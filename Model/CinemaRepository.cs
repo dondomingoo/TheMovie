@@ -10,7 +10,8 @@ namespace TheMovie.Model
     class CinemaRepository
     {
         private readonly List<Cinema> _cinemas;
-        
+        private Datahandler _datahandler = new Datahandler();
+
         public CinemaRepository()
         {
             _cinemas = new List<Cinema>();
@@ -35,5 +36,14 @@ namespace TheMovie.Model
             return _cinemas;
         }
 
+        public void SaveCinemaSchedule(Cinema cinema)
+        {
+            _datahandler.SaveToFile(cinema);
+        }
+
+        public void LoadCinemaSchedule(Cinema cinema)
+        {
+            _datahandler.LoadFromFile(cinema);
+        }
     }
 }

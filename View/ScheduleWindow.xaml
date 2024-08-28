@@ -18,8 +18,8 @@
                         <TextBlock Text="{Binding EndTime, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
                         <TextBlock Text=" " Width="50"/>
                         <TextBlock Text="{Binding Screen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="10"/>
-                        <TextBlock Text=" " Width="50"/>
-                        <TextBlock Text="{Binding AvailableSeats, Mode=oneWay, UpdateSourceTrigger=PropertyChanged}" Width="10"/>
+                        <TextBlock Text=" " Width="100"/>
+                        <TextBlock Text="{Binding AvailableSeats, Mode=oneWay, UpdateSourceTrigger=PropertyChanged}" Width="20"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -37,6 +37,11 @@
         <Label Content="Antal pladser:" HorizontalAlignment="Left" Margin="1113,288,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="1233,292,0,0" TextWrapping="Wrap" Text="{Binding SelectedPlayTime.Seats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="320"/>
         <Button Content="Tilføj Reservation" Command="{Binding SaveScheduleCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" Margin="1393,517,0,0" VerticalAlignment="Top" Height="45" Width="178" BorderBrush="#FF020A03" Background="#FF006F11" Click="Button_Click" IsEnabled="{Binding SelectedCPlayTime}"/>
+        <Label Content="Film" HorizontalAlignment="Left" Margin="26,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="Start dato og tid" HorizontalAlignment="Left" Margin="317,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="Slut dato og tid" HorizontalAlignment="Left" Margin="548,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="sal" HorizontalAlignment="Center" Margin="0,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="ledige pladser" HorizontalAlignment="Left" Margin="900,53,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

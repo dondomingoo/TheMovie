@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ReservationWindow" Height="450" Width="800">
     <Grid Background="#FFCFFD0C">
-        <ListBox ItemsSource="{Binding SelectedReservation}" Margin="39,49,414,166">
+        <ListBox ItemsSource="{Binding SelectedPlaytime.Reservations}" SelectedItem="{Binding SelectedReservation}" Margin="39,49,414,166">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -18,21 +18,23 @@
                         <TextBlock Text="{Binding Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
                         <TextBlock Text=" " Width="100"/>
                         <TextBlock Text="{Binding TicketAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
-                        <TextBlock Text=" " Width="100"/>
-                        <TextBlock Text="{Binding PremiereDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:yyyy-MM-dd}}" Width="100"/>
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBox HorizontalAlignment="Left" Margin="604,96,0,0" TextWrapping="Wrap" Text="{Binding SelectedReservation.Name}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="604,133,0,0" TextWrapping="Wrap" Text="{Binding selectedReservation.Email}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="604,173,0,0" TextWrapping="Wrap" Text="{Binding SelectedReservation.Phone}" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="604,217,0,0" TextWrapping="Wrap" Text="{Binding SelectedReservation.TickedAmount}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="604,96,0,0" TextWrapping="Wrap" Text="{Binding Reservation.Name}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="604,133,0,0" TextWrapping="Wrap" Text="{Binding Reservation.Email}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="604,173,0,0" TextWrapping="Wrap" Text="{Binding Reservation.Phone}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="604,217,0,0" TextWrapping="Wrap" Text="{Binding Reservation.TickedAmount}" VerticalAlignment="Top" Width="120"/>
         <Label Content="Navn:" HorizontalAlignment="Left" Margin="422,92,0,0" VerticalAlignment="Top" Width="118"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="422,129,0,0" VerticalAlignment="Top" Width="118"/>
         <Label Content="Telefon nr:" HorizontalAlignment="Left" Margin="422,169,0,0" VerticalAlignment="Top" Width="118"/>
         <Label Content="Antal Billetter" HorizontalAlignment="Left" Margin="422,213,0,0" VerticalAlignment="Top" Width="118"/>
-        <Button Content="Gem og luk" HorizontalAlignment="Left" Margin="422,335,0,0" VerticalAlignment="Top" Height="35" Width="302" Background="#FFEA4646"/>
+        <Button Content="Gem og luk" HorizontalAlignment="Left" Margin="422,363,0,0" VerticalAlignment="Top" Height="35" Width="302" Background="#FFEA4646"/>
+        <Label Content="Billetter Tilbage:" HorizontalAlignment="Left" Margin="424,31,0,0" VerticalAlignment="Top" Height="31" Width="103"/>
+        <Label Content="{Binding SelectedPlaytime.AvailableSeats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="31" Margin="573,31,0,0" VerticalAlignment="Top" Width="67" Background="#00000000" Foreground="#FFF90000" FontStyle="Italic" FontWeight="Bold"/>
+        <Button Content="Tilføj Reservation" HorizontalAlignment="Left" Margin="612,258,0,0" VerticalAlignment="Top" Height="35" Width="104" Background="#FFEA4646"/>
 
 
     </Grid>
