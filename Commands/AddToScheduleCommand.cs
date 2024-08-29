@@ -9,7 +9,7 @@ using TheMovie.ViewModels;
 
 namespace TheMovie.Commands
 {
-    class AddToScheduleCommand : ICommand
+    public class AddToScheduleCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
 
