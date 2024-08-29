@@ -26,6 +26,8 @@ namespace TheMovie.Model
             AddCinema(new Cinema { Name = "Ræhr" });
         }
         
+
+        
         private void AddCinema(Cinema cinema)
         {
             _cinemas.Add(cinema);

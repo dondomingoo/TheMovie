@@ -27,7 +27,7 @@ namespace TheMovie.Model
                 {
                     _seats = value;
                     OnPropertyChanged();
-                    OnPropertyChanged(nameof(AvailableSeats)); // Notify that AvailableSeats has also changed
+                    OnPropertyChanged(nameof(AvailableSeats)); //notify som også ændrer AvailableSeats property når Seats property ændres.
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace TheMovie.Model
                 {
                     _reservedSeats = value;
                     OnPropertyChanged();
-                    OnPropertyChanged(nameof(AvailableSeats)); // Notify that AvailableSeats has also changed
+                    OnPropertyChanged(nameof(AvailableSeats)); // notify som også ændrer AvailableSeats property når ReservedSeats property ændres.
                 }
             }
         }

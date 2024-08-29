@@ -10,8 +10,9 @@ namespace TheMovie.Model
 {
     public class Datahandler
     {
-        private static void LoadFromFile()
-        { }
+
+
+        //Metode som indlæser Movie-objekter fra filen MovieDoc.txt og tilføjer dem til listen med Movie-objekter.
         public void LoadFromFile(List<Movie> movies)
         {
             if (!File.Exists("MovieDoc.txt"))
