@@ -4,17 +4,17 @@ using TheMovie.Model;
 
 public class MovieRepository
 {
-    //En ny liste som inneholder Movie-objekter blir opprettet
+    //En ny liste som indeholder Movie-objekter blir opprettet
     public List<Movie> movies = new List<Movie>();
     private Datahandler _datahandler = new Datahandler();
 
-    //Konstruktør som kaller på LoadFromFile metoden for at listen skal fylles med Movie-objekter fra filen
+    //Konstruktør som kalder på LoadFromFile metoden for at listen skal fylles med Movie-objekter fra filen
     public MovieRepository()
     {
         _datahandler.LoadFromFile(movies);
     }
 
-    //Metode som ligger et Movie-objekt til listen og kaller på SaveToFile metoden for at lagre listen til filen
+    //Metode som ligger et Movie-objekt til listen og kalder på SaveToFile metoden for at lagre listen til filen
     public void AddMovie(Movie movie)
     {
         movies.Add(movie);
