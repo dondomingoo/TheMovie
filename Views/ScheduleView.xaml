@@ -42,6 +42,7 @@
 
         <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5,0,5">
             <Button Content="Film" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="74" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="249,5,0,0" Click="Button_Click"/>
+            <Button Content="Reservationer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="98" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="146,5,0,0" Click="Button_Click_1"/>
             <Label Content="Biograf" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,200"/>
             <ComboBox Name="CinemaComboBox" ItemsSource="{Binding CinemasVM}" SelectedItem="{Binding SelectedCinema}" DisplayMemberPath="Name" Margin="118,0,17,200" VerticalAlignment="Bottom"/>
             <Label Content="Sal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,170"/>

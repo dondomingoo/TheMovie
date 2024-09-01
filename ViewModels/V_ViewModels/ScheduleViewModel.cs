@@ -128,11 +128,11 @@ namespace TheMovie.ViewModels.V_ViewModels
             CinemaRepository cR = new();
             foreach (Cinema cinema in cR.GetCinemas())
             {
-                ScreenRepository sR = new(cinema.Name, cinema.ScreenCapacities);
+                ScreenRepository sR = new(cinema, cinema.ScreenCapacities);
                 foreach (Screen screen in sR.GetScreens())
                 {
-                    PlayTimeRepository pR = new(cinema.Name, screen.Name);
-                    pR.UpdatePlayTimes([]);
+                    PlayTimeRepository pR = new(cinema, screen.Name, screen.Capacity);
+                    pR.UpdatePlayTimes([], cinema, SelectedScreen.Screen);
                 }
             }
             if (PlayTimesVM.Count != 0)
@@ -145,7 +145,7 @@ namespace TheMovie.ViewModels.V_ViewModels
         {
             if (SelectedScreen != null && SelectedCinema != null)
             {
-                pR = new(SelectedCinema.Name, SelectedScreen.Name);
+                pR = new(SelectedCinema.Cinema, SelectedScreen.Name, SelectedScreen.Capacity);
                 PlayTimesVM.Clear();
                 foreach (PlayTime playTime in pR.GetPlayTimes())
                 {
@@ -157,7 +157,7 @@ namespace TheMovie.ViewModels.V_ViewModels
         public void AddPlayTime()
         {
             DateTime? dateTime = SelectedDate + TimeSpan.Parse(SelectedTimeSpan);
-            PlayTime playTime = new(dateTime, SelectedMovie.Movie);
+            PlayTime playTime = new(dateTime, SelectedMovie.Movie, SelectedScreen.Name, SelectedScreen.Capacity, SelectedCinema.Cinema);
             PlayTimeViewModel pVM = new(playTime);
             PlayTimesVM.Add(pVM);
             SelectedPlayTime = pVM;
@@ -182,7 +182,7 @@ namespace TheMovie.ViewModels.V_ViewModels
             {
                 playTimeList.Add(playTimeViewModel.PlayTime);
             }
-            pR.UpdatePlayTimes(playTimeList);
+            pR.UpdatePlayTimes(playTimeList, SelectedCinema.Cinema, SelectedScreen.Screen);
         }
     }
 }

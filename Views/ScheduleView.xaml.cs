@@ -18,5 +18,12 @@ namespace TheMovie.Views
             main.Show();
             this.Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ReservationsView rV = new ReservationsView();
+            rV.Show();
+            this.Close();
+        }
     }
 }

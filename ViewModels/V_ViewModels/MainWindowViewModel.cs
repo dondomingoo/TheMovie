@@ -10,6 +10,7 @@ namespace TheMovie.ViewModels.V_ViewModels
     public class MainWindowViewModel : ViewModelBase
     {
         private MovieRepository mR = new();
+        public ObservableCollection<MovieViewModel> MoviesVM { get; set; }
         private MovieViewModel selectedMovie;
         public MovieViewModel SelectedMovie
         {
@@ -23,7 +24,6 @@ namespace TheMovie.ViewModels.V_ViewModels
                 }
             }
         }
-        public ObservableCollection<MovieViewModel> MoviesVM { get; set; }
 
         public MainWindowViewModel()
         {
@@ -84,10 +84,10 @@ namespace TheMovie.ViewModels.V_ViewModels
             CinemaRepository cR = new();
             foreach (Cinema cinema in cR.GetCinemas())
             {
-                ScreenRepository sR = new(cinema.Name, cinema.ScreenCapacities);
+                ScreenRepository sR = new(cinema, cinema.ScreenCapacities);
                 foreach (Screen screen in sR.GetScreens())
                 {
-                    PlayTimeRepository pR = new(cinema.Name, screen.Name);
+                    PlayTimeRepository pR = new(cinema, screen.Name, screen.Capacity);
                     foreach (PlayTime playTime in pR.GetPlayTimes())
                     {
                         if (playTime.Movie.MovieId == movieVM.Movie.MovieId)

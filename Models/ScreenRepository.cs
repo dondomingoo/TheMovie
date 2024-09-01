@@ -4,11 +4,11 @@
     {
         private List<Screen> screens = [];
         
-        public ScreenRepository(string cinemaName, List<int> capacities)
+        public ScreenRepository(Cinema cinema, List<int> capacities)
         {
             for (int i = 0; i < capacities.Count; i++)
             {
-                screens.Add(new(cinemaName, "Sal_" + (i+1).ToString(), capacities[i]));
+                screens.Add(new(cinema, "Sal_" + (i+1).ToString(), capacities[i]));
             }
         }
         public List<Screen> GetScreens()
