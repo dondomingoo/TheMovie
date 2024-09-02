@@ -18,13 +18,14 @@ namespace TheMovie.Views
     /// <summary>
     /// Interaction logic for ReservationsView.xaml
     /// </summary>
-    public partial class ReservationsView : Window
+    public partial class ReservationsView1 : Window
     {
         public static ReservationsViewModel Rvm { get; } = new();
-        public ReservationsView()
+        public ReservationsView1()
         {
             InitializeComponent();
             DataContext = Rvm;
+            Rvm.SelectedCinema = null;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -37,6 +38,13 @@ namespace TheMovie.Views
         {
             ScheduleView playTimeView = new();
             playTimeView.Show();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            ReservationsView2 reservationsView2 = new();
+            reservationsView2.Show();
             this.Close();
         }
     }

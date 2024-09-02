@@ -84,10 +84,10 @@ namespace TheMovie.ViewModels.V_ViewModels
             CinemaRepository cR = new();
             foreach (Cinema cinema in cR.GetCinemas())
             {
-                ScreenRepository sR = new(cinema, cinema.ScreenCapacities);
+                ScreenRepository sR = new(cinema.Name, cinema.ScreenCapacities);
                 foreach (Screen screen in sR.GetScreens())
                 {
-                    PlayTimeRepository pR = new(cinema, screen.Name, screen.Capacity);
+                    PlayTimeRepository pR = new(cinema.Name, screen.Name, screen.Capacity);
                     foreach (PlayTime playTime in pR.GetPlayTimes())
                     {
                         if (playTime.Movie.MovieId == movieVM.Movie.MovieId)

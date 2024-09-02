@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace TheMovie.Models
 {
-    public class Reservation(int movieId, int screenNumber, Customer customer, int numberOfTickets): IEntity
+    public class Reservation(DateTime? startTime, int? movieId, int screenNumber, Customer customer, int? numberOfTickets): IEntity
     {
         public Customer Customer { get; set; } = customer;
-        public int NumberOfTickets { get; set; } = numberOfTickets;
+        public int? NumberOfTickets { get; set; } = numberOfTickets;
 
         public override string ToString()
         {
-            return $"{movieId};{screenNumber};{Customer.ToString()};{NumberOfTickets}";
+            return $"{startTime};{movieId};{screenNumber};{Customer.ToString()};{NumberOfTickets}";
         }
     }
 }

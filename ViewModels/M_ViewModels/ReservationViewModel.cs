@@ -11,6 +11,6 @@ namespace TheMovie.ViewModels.M_ViewModels
     {
         public Reservation Reservation { get; set; } = reservation;
         public Customer Customer { get; set; } = reservation.Customer;
-        public int NumberOfTickets { get; set; } = reservation.NumberOfTickets;
+        public int? NumberOfTickets { get; set; } = reservation.NumberOfTickets;
     }
 }

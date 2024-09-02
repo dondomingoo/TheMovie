@@ -1,0 +1,65 @@
+﻿<Window x:Class="TheMovie.Views.ReservationsView2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheMovie.Views"
+        mc:Ignorable="d"
+                Title="Reservationsoversigt" Height="450" Width="1020"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#FF070219">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Background="#FFC0C0C0" Grid.Row="0">
+                    <TextBlock Text="Antal billetter" Width="100" FontWeight="Bold" HorizontalAlignment="Center" Margin="7,0,0,0"/>
+                    <TextBlock Text="Tlf." Width="150" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                    <TextBlock Text="Email" Width="350" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                </StackPanel>
+
+                <ListBox ItemsSource="{Binding ReservationsVM, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedReservation}" Background="#FFE6E6E6" Grid.Row="1" Margin="0,0,0,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding NumberOfTickets, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                                <TextBlock Text="{Binding Customer.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" Width="150"/>
+                                <TextBlock Text="{Binding Customer.Email, UpdateSourceTrigger=PropertyChanged}" Width="350"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5,0,5">
+            <Button Content="Spilletider" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="74" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="249,5,0,0" Click="Button_Click"/>
+            <Button Content="Film" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="98" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="146,5,0,0" Click="Button_Click_1"/>
+            <Button Content="Tilbage" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="98" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White" Margin="43,5,0,0" Click="Button_Click_3"/>
+            
+            <Label Content="Antal billetter" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,170"/>
+            <TextBox Text="{Binding SelectedReservation.NumberOfTickets, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedReservation, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="205" Background="#FFE6E6E6" Margin="118,0,0,170"/>
+            <Label Content="Tlf." HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,140"/>
+            <TextBox Text="{Binding SelectedReservation.Customer.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedReservation, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="205" Background="#FFE6E6E6" Margin="118,0,0,140"/>
+            <Label Content="Email" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="White" Margin="10,0,0,110"/>
+            <TextBox Text="{Binding SelectedReservation.Customer.Email, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SelectedReservation, TargetNullValue=False}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="205" Background="#FFE6E6E6" Margin="118,0,0,110"/>
+            <StackPanel Orientation="Horizontal" Margin="10,373,10,0">
+                <Button Content="Tilføj reservation" Command="{Binding AddCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
+                <Button Content="Slet reservation" Command="{Binding DeleteCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Center" Margin="8,0,0,0" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
+                <Button Content="Gem ændringer" Command="{Binding SaveCommand}" CommandParameter="{Binding}"  HorizontalAlignment="Right" Margin="8,0,0,0" VerticalAlignment="Bottom" Height="25" Width="100" BorderBrush="#FF020A03" Background="#FF313131" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+</Window>

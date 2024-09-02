@@ -22,7 +22,7 @@ namespace TheMovie.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ReservationsView rV = new ReservationsView();
+            ReservationsView1 rV = new ReservationsView1();
             rV.Show();
             this.Close();
         }

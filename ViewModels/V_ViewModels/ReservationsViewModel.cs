@@ -1,12 +1,14 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TheMovie.Models;
 using TheMovie.MVVM;
 using TheMovie.ViewModels.M_ViewModels;
+using TheMovie.Views;
 
 namespace TheMovie.ViewModels.V_ViewModels
 {
@@ -24,14 +26,15 @@ namespace TheMovie.ViewModels.V_ViewModels
                 {
                     selectedPlayTime = value;
                     OnPropertyChanged("SelectedPlayTime");
+                    CheckSelectionReservations();
                 }
             }
         }
 
         private ReservationRepository rR;
-        public ObservableCollection<PlayTimeViewModel> ReservationsVM { get; set; } = [];
-        private PlayTimeViewModel selectedReservation;
-        public PlayTimeViewModel SelectedReservation
+        public ObservableCollection<ReservationViewModel> ReservationsVM { get; set; } = [];
+        private ReservationViewModel selectedReservation;
+        public ReservationViewModel SelectedReservation
         {
             get { return selectedReservation; }
             set
@@ -74,12 +77,12 @@ namespace TheMovie.ViewModels.V_ViewModels
                 {
                     selectedMovie = value;
                     OnPropertyChanged("SelectedMovie");
-                    CheckSelection();
+                    CheckSelectionPlayTimes();
                 }
             }
         }
 
-        public ReservationsViewModel() 
+        public ReservationsViewModel()
         {
             CinemasVM = [];
             foreach (Cinema cinema in cR.GetCinemas())
@@ -93,15 +96,74 @@ namespace TheMovie.ViewModels.V_ViewModels
                 MoviesVM.Add(new MovieViewModel(movie));
             }
         }
-        public void CheckSelection()
+
+        public RelayCommand AddCommand => new(execute => AddReservation());
+        public RelayCommand DeleteCommand => new(execute => DeleteReservation(), canExecute => SelectedMovie != null);
+        public RelayCommand SaveCommand => new(execute => SaveReservations());
+
+        public void AddReservation()
+        {
+            Reservation reservation = new(SelectedPlayTime.StartTime, selectedPlayTime.Movie.MovieId, selectedPlayTime.ScreenNumber, new Customer(null, null), null);
+            ReservationViewModel rVM = new(reservation);
+            ReservationsVM.Add(rVM);
+            SelectedReservation = rVM;
+
+            if (SelectedReservation != null)
+            {
+                ReservationsDialogBox1 editReservationDialog = new();
+                editReservationDialog.ShowDialog();
+            }
+        }
+
+        public void DeleteReservation()
+        {
+            ReservationsVM.Remove(SelectedReservation);
+        }
+        public void SaveReservations()
+        {
+            foreach (ReservationViewModel rVM in ReservationsVM)
+            {
+                rVM.Reservation.NumberOfTickets = rVM.NumberOfTickets;
+                rVM.Reservation.Customer.PhoneNumber = rVM.Customer.PhoneNumber;
+                rVM.Reservation.Customer.Email = rVM.Customer.Email;
+            }
+
+            List<Reservation> reservationList = [];
+            foreach (ReservationViewModel rVM in ReservationsVM)
+            {
+                reservationList.Add(rVM.Reservation);
+            }
+            rR.UpdateReservations(reservationList);
+
+            MessageBox.Show("Listen er opdateret");
+        }
+
+        public void CheckSelectionPlayTimes()
         {
             if (SelectedMovie != null && SelectedCinema != null)
             {
-                pR = new(SelectedCinema.Cinema, SelectedMovie.Movie.MovieId);
+                pR = new(SelectedCinema.Name, SelectedMovie.Movie.MovieId, SelectedCinema.Cinema);
                 PlayTimesVM.Clear();
                 foreach (PlayTime playTime in pR.GetPlayTimes())
                 {
                     PlayTimesVM.Add(new(playTime));
+                }
+            }
+        }
+
+        public void CheckSelectionReservations()
+        {
+            if (SelectedPlayTime != null && SelectedMovie != null)
+            {
+                rR = new(SelectedCinema.Name, SelectedPlayTime.StartTime, selectedMovie.Movie, SelectedPlayTime.ScreenNumber);
+                
+                if (rR.GetReservations() != null)
+                {
+                    ReservationsVM.Clear();
+                    foreach (Reservation reservation in rR.GetReservations())
+                    {
+                        ReservationsVM.Add(new(reservation));
+                    }
                 }
             }
         }
